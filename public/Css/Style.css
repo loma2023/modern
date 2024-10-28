@@ -1,0 +1,1068 @@
+/* ********* Start Details-Company ********* */
+.Details-Company {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  padding: 5px;
+  padding-right: 20px;
+  display: none;
+}
+
+.Receipt-Container .Details-Company {
+  display: flex;
+}
+
+.Details-Company {
+  border-bottom: 1px solid var(--Cyan);
+}
+
+.Details-Company .NameCompany {
+  font-size: 35px;
+  color: var(--Sky);
+}
+
+.Details-Company .Row {
+  margin-top: 10px;
+}
+
+.Details-Company .AddressCompany,
+.Details-Company .PhoneCompany {
+  display: flex;
+  align-items: center;
+}
+
+.Details-Company .AddressCompany i,
+.Details-Company .PhoneCompany i {
+  width: 20px;
+  height: 20px;
+  border: var(--border);
+}
+
+.Details-Company .Logo {
+  width: 150px;
+  height: 100px;
+}
+
+/* ********* End Details-Company ********* */
+/* ********* Start Title-Container ********* */
+.Wrapper-Tilte {
+  width: fit-content;
+}
+
+.Layout-Container .Title-Container,
+.Layout-Container .Title-Container2 {
+  font-size: 25px;
+  color: var(--Black);
+}
+
+.Layout-Container .Title-Container2 {
+  display: none;
+}
+
+/* ********* End Title-Container ********* */
+/* ********* Start Buttons-Container ********* */
+.Layout-Container .Buttons-Container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  margin: 15px 0;
+}
+
+.Layout-Container .Buttons-Container .Row .card-item {
+  margin: 0 !important;
+}
+
+.Layout-Container .Buttons-Container .left {
+  display: flex;
+  justify-content: end;
+  gap: 7px;
+  padding-top: 2px;
+}
+
+.Layout-Container .Buttons-Container p {
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+/* ********* End Buttons-Container ********* */
+/* ********* Start Person-Details ********* */
+.Person-Details {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 4fr 2.5fr;
+  gap: 15px;
+  color: var(--Black);
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin-bottom: 10px;
+  border: var(--border);
+}
+
+.Person-Details.Person-Img {
+  grid-template-columns: 1fr 4fr 2.5fr;
+}
+
+.Form .Person-Details {
+  margin-top: 20px;
+  border: var(--border);
+}
+
+.Person-Details .item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.Person-Details .item h4 {
+  width: 90px;
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+
+.Person-Details .left .item h4 {
+  width: 125px;
+}
+
+.Person-Details .item h4::after {
+  content: ':';
+  margin-right: auto;
+}
+
+.Person-Details .item p {
+  font-size: 15px;
+  font-weight: 600;
+  max-width: 200px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Layout-Container .Person-Details img {
+  width: 145px;
+  border-radius: 8px;
+}
+
+.Layout-Container .Person-Details .btns {
+  margin-top: 20px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ********* End Person-Details ********* */
+/* ********* Start Search-Container ********* */
+.Layout-Container .Search-Container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 10px;
+  opacity: 0;
+  pointer-events: none;
+  height: 0;
+  margin: 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.Layout-Container .Search-Container.active {
+  opacity: 1;
+  pointer-events: auto;
+  height: auto;
+  margin: 30px 0 15px 0;
+  transition: all 0.3s ease-in-out;
+}
+
+.Layout-Container .Search-Container .input-box {
+  margin: 0 !important;
+}
+
+.Filter-icon {
+  cursor: pointer;
+}
+
+.Layout-Container .Search-Container .filter-item {
+  width: 200px;
+  background: var(--White);
+  border: var(--border);
+  border-radius: 5px;
+  padding: 5px 2px;
+  position: absolute;
+  top: 50px;
+  z-index: 90;
+  left: 0;
+  transition: all 0.1s ease-in-out;
+  display: none;
+}
+
+.Layout-Container .Search-Container .filter-item.active {
+  display: block;
+}
+
+.Layout-Container .Search-Container .filter-item h5 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  color: var(--Black);
+}
+
+.Layout-Container .Search-Container .filter-item h5.active,
+.Layout-Container .Search-Container .filter-item h5:hover {
+  background: var(--Gray);
+}
+
+.Layout-Container .Search-Container .filter-item h5.active::after {
+  content: '✔';
+  float: left;
+}
+
+/* ********* End Search-Container ********* */
+/* ********* Start Table-Container ********* */
+.Table-Container {
+  height: calc(100vh - 200px);
+  overflow: auto;
+  transition: 0.3s;
+}
+
+.Table-Container.active {
+  height: calc(100vh - 270px);
+  transition: 0s;
+}
+
+.Table-Container.Table-File {
+  height: calc(100vh - 250px);
+}
+
+.Table-Container.Table-File.active {
+  height: calc(100vh - 330px);
+}
+
+.Table {
+  width: 100%;
+  border-collapse: collapse;
+  user-select: all;
+  margin: auto;
+}
+
+.Table * {
+  user-select: auto;
+}
+
+.Table thead tr {
+  height: 35px;
+  text-align: right;
+  font-weight: bold;
+  color: var(--FFF);
+  background: var(--Blue-Linear);
+  position: sticky;
+  top: -2px;
+  z-index: 9;
+}
+
+.Table tbody tr {
+  color: var(--Black);
+  font-weight: 600;
+}
+
+.Table tbody.HideFirstRow tr:first-child {
+  display: none;
+}
+
+.Table th,
+.Table td {
+  padding: 5px 10px;
+}
+
+.Table td img {
+  width: 35px;
+  border-radius: 5px;
+}
+
+.FlexTH {
+  display: flex;
+  justify-content: space-between;
+}
+
+.FlexTD {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.FlexTD span:last-child {
+  min-width: 50px;
+  text-align: center;
+  color: var(--Black);
+  border: var(--border);
+  padding: 1px 10px;
+  border-radius: 5px;
+  margin-right: auto;
+}
+
+.FlexTD .Credit {
+  background: var(--Rose);
+  color: var(--FFF) !important;
+}
+
+.FlexTD .Debit-Credit {
+  display: none;
+}
+
+.Table tbody tr .PaymentWay div,
+.Table tbody tr .Plan div {
+  padding: 3px;
+  text-align: center;
+  border-radius: 25px;
+  color: #fff;
+}
+
+.Table tbody tr .PaymentWay.fit-contant div,
+.Table tbody tr .Plan.fit-contant div {
+  width: 55%;
+  margin: auto;
+}
+
+.Table tbody tr .Plan.Month div {
+  background: var(--Cyan-Linear);
+}
+
+.Table tbody tr .Plan.Year div {
+  background: var(--Primary-Linear);
+}
+
+.Table tbody tr .PaymentWay.undefined div,
+.Table tbody tr .Plan.Latter div {
+  border: var(--border);
+  color: #000;
+}
+
+.Table tbody tr .Plan.Lifetime div {
+  background: var(--Yellow-Linear);
+}
+
+.Table tbody tr .PaymentWay.Vodafone div {
+  background: var(--Rose-Linear);
+}
+
+.Table tbody tr .PaymentWay.Etisalat div {
+  background: var(--Teal-Linear);
+}
+
+.Table tbody tr .PaymentWay.InstaPay div {
+  background: var(--Orange-Linear);
+}
+
+
+.Table tbody tr:nth-of-type(even) {
+  background: var(--tr-bg);
+}
+
+.Table tbody tr:last-of-type {
+  border-bottom: 2px solid var(--Cyan);
+}
+
+.Table tbody tr:hover {
+  background: var(--Slate-Linear);
+}
+
+.Table tr th,
+.Table tr td {
+  border: var(--border);
+}
+
+
+/* ********* End Table-Container ********* */
+/* ********* Start Any btn ********* */
+.btn-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.Table .btn-box .tooltip {
+  top: -40px;
+}
+
+.btn {
+  width: 130px;
+  height: 35px;
+  border: none;
+  color: var(--FFF);
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1em;
+  font-weight: 900;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Receipt-Container .btns .btn,
+.Layout-Container .Person-Details .btns .btn,
+.Layout-Container .Buttons-Container .btn {
+  width: 40px;
+  height: 40px;
+  font-size: 1.2em;
+  padding: 10px;
+  overflow: hidden;
+}
+
+.Table .btn {
+  width: 30px;
+  height: 30px;
+  font-size: 1.1em;
+  font-weight: 500;
+}
+
+.btn-Edit:disabled,
+.btn-Delete:disabled,
+.btn-Save:disabled {
+  opacity: 0.9;
+  position: relative;
+  color: transparent !important;
+  cursor: wait;
+}
+
+.btn-Edit:disabled::before,
+.btn-Delete:disabled::before,
+.btn-Save:disabled::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: none;
+  border: 5px solid transparent;
+  border-top-color: var(--Yellow);
+  position: absolute;
+  bottom: 50%;
+  right: 50%;
+  z-index: 5;
+  animation: BtnLoad 0.8s ease infinite;
+}
+
+@keyframes BtnLoad {
+  0% {
+    transform: translate(50%, 50%) rotate(0turn);
+  }
+
+  100% {
+    transform: translate(50%, 50%) rotate(1turn);
+  }
+}
+
+.btn-Save {
+  color: var(--FFF);
+  background: var(--Blue-Linear);
+  box-shadow: var(--valueShadow) var(--Blue);
+  border-radius: 2px;
+}
+
+.btn-Save:hover {
+  background: var(--Blue-Linear-Hover);
+}
+
+.btn-Cancel {
+  color: var(--Cyan) !important;
+  background: var(--White);
+  box-shadow: var(--valueShadow) var(--Gray);
+  border: var(--border);
+  border-radius: 2px;
+}
+
+.btn-Cancel:hover {
+  background: var(--Gray);
+}
+
+.btn-Message,
+.btn-plus {
+  background: var(--Blue-Linear);
+  box-shadow: var(--valueShadow) var(--Blue);
+}
+
+.btn-Message:hover,
+.btn-plus:hover {
+  background: var(--Blue-Linear-Hover);
+}
+
+.btn-search {
+  background: var(--Orange-Linear);
+  box-shadow: var(--valueShadow) var(--Orange);
+}
+
+.btn-search:hover {
+  background: var(--Orange-Linear-Hover);
+}
+
+.btn-Collect,
+.btn-excel,
+.btn-Edit {
+  background: var(--Emerald);
+  box-shadow: var(--valueShadow) var(--Emerald);
+}
+
+.btn-Collect:hover,
+.btn-excel:hover,
+.btn-Edit:hover {
+  background: var(--Emerald-Linear-Hover);
+}
+
+.btn-print {
+  background: var(--Green);
+  box-shadow: var(--valueShadow) var(--Green);
+}
+
+.btn-print:hover {
+  background: var(--Green-Linear-Hover);
+}
+
+.btn-File {
+  background: var(--Primary-Linear);
+  box-shadow: var(--valueShadow) var(--Primary);
+}
+
+.btn-File:hover {
+  background: var(--Primary-Linear-Hover);
+}
+
+.btn-History {
+  background: var(--Yellow);
+  box-shadow: var(--valueShadow) var(--Yellow);
+}
+
+.btn-History:hover {
+  background: var(--Yellow-Linear-Hover);
+}
+
+.btn-Delete {
+  background: var(--Rose);
+  box-shadow: var(--valueShadow) var(--Rose);
+}
+
+.btn-Delete:hover {
+  background: var(--Rose-Linear-Hover);
+}
+
+.Alert .btn-Delete {
+  border-radius: 2px;
+}
+
+/* ********* End  Any btn ********* */
+/* ********* Start Receipts-container ********* */
+
+.Receipts-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+/* ********* Start Receipts-Right ********* */
+.Receipts-container .Table thead tr {
+  height: 25px;
+}
+
+.Receipts-container .Table td {
+  padding: 0px 5px !important;
+}
+
+.Receipts-container .Table td .btn {
+  margin: 3px 6px;
+}
+
+.Receipts-container .Table select,
+.Receipts-container .Table input {
+  font-size: 1rem;
+  font-weight: 800;
+  padding: 0px !important;
+  border: none !important;
+  height: 30px !important;
+  background: none !important;
+}
+
+.Receipts-container .Table .Select-box .SelectMenu input,
+.Receipts-container .Table input[type="button"] {
+  padding-right: 20px !important;
+}
+
+.Receipts-container .Table .Select-box .SelectMenu input {
+  border: 1px solid var(--Cyan) !important;
+}
+
+.Receipts-container .Table select option {
+  background: var(--White);
+}
+
+/* ********* End  Receipts-Right ********* */
+/* ********* Start Receipts-Left ********* */
+
+.Receipts-container .Receipt-left {
+  padding-right: 10px;
+  border-right: var(--border);
+}
+
+.Receipts-container .Receipt-left .nu-Receipt {
+  margin-bottom: 50px;
+}
+
+.Receipts-container .Receipt-left .mrg-t-50 {
+  margin-top: 50px;
+}
+
+.Receipts-container .Receipt-left button {
+  margin-top: 30px;
+  width: 100% !important;
+}
+
+.Receipts-container .Receipt-left .card-item input {
+  width: 80px !important;
+  height: 30px !important;
+  padding: 5px;
+}
+
+.Receipts-container .Receipt-left .Discount {
+  text-align: end;
+}
+
+.Receipts-container .Receipt-left .Discount:focus {
+  text-align: center;
+}
+
+.Receipts-container .Receipt-left .input-amount {
+  display: none;
+}
+
+/* ********* End  Receipts-Right ********* */
+/* ********* Start Select-box ********* */
+
+.Select-box {
+  position: relative;
+}
+
+.Form .Select-box .input-box {
+  margin-bottom: 30px !important;
+}
+
+.Form .Select-box .SelectMenu .input-box,
+.Select-box .input-box {
+  margin-bottom: 5px !important;
+}
+
+.Select-box .SelectMenu {
+  width: 100%;
+  background: var(--White);
+  border: var(--border);
+  padding: 5px;
+  position: absolute;
+  top: 50px;
+  z-index: 98;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.Select-box .SelectMenu.active {
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.2s ease-in-out;
+}
+
+.Select-box .SelectMenu input {
+  height: 30px !important;
+}
+
+.Select-box .SelectItmes {
+  height: 100px;
+  padding-bottom: 10px;
+  overflow-y: auto;
+}
+
+.Select-box .SelectItmes h3 {
+  color: var(--Black);
+  padding: 5px 10px;
+  font-size: 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.Select-box .SelectItmes h3:hover {
+  background: var(--Gray);
+}
+
+.Receipts-container .Select-box .input-box i {
+  min-width: 10px;
+}
+
+
+/* ********* Select-box in Table ********* */
+.Receipts-container .Table .Select-box {
+  margin-top: 4px;
+}
+
+.Receipts-container .Table input[type="search"] {
+  border: 1px solid var(--Cyan);
+}
+
+.Receipts-container .Table .Select-box .SelectMenu {
+  top: 40px;
+}
+
+.Receipts-container .Table .Select-box input {
+  padding: 2px 30px;
+}
+
+.Receipts-container .Table .Select-box .input-box span {
+  right: -10px;
+}
+
+/* ********* End Receipts-container ********* */
+/* ********* Start Settings-container ********* */
+
+.Settings-Container {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 10px;
+}
+
+.Settings-Container .Right,
+.Settings-Container .Left {
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+  margin: 0;
+  position: relative;
+}
+
+/* Right */
+.Settings-Container .Right {
+  padding: 0 20px 20px;
+}
+
+.Settings-Container .Right img {
+  width: 200px;
+  display: flex;
+  margin: 20px auto;
+  margin-bottom: 40px;
+  border-radius: 50%;
+  border: 4px solid var(--Cyan);
+}
+
+/* Left */
+.Wrapper-button {
+  border-bottom: var(--border);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.Wrapper-button button {
+  width: 100%;
+  min-height: 40px;
+  cursor: pointer;
+  background: var(--White);
+  color: var(--Black);
+  transition: 0.3s !important;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.Wrapper-button button.active {
+  border-bottom: 2px solid var(--Cyan);
+}
+
+.SubContainer {
+  height: 100%;
+}
+
+.ContainerStep p {
+  font-size: 15px;
+  margin-top: 3px;
+}
+
+.Settings-Container .Right .card-item h3 {
+  font-size: 15px;
+  margin-top: 7px;
+}
+
+.Settings-Container .ContainerStep h4 {
+  margin: 20px 0;
+}
+
+.Settings-Container .Left .card-item {
+  padding: 5px;
+  margin: 15px 0;
+  border: 1px solid;
+  border-color: transparent transparent var(--border-color) transparent;
+}
+
+.Settings-Container .Left .card-item:hover {
+  background: var(--Gray-Linear);
+  border-radius: 5px;
+  border: var(--border);
+}
+
+.Settings-Container .Left .card-item p {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+
+.Settings-Container .FooterStep {
+  justify-content: flex-end;
+}
+
+
+.Settings-Container .SubContainer {
+  background-color: rgba(210, 96, 14, 0);
+  width: 100%;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.Settings-Container .SubContainer .ContainerStep {
+  padding: 30px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: -100%;
+  transition: all .2s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+
+.Settings-Container .SubContainer .ContainerStep.active {
+  right: 0;
+  transition: all .2s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+
+/* ********* End Settings-container ********* */
+/* ********* Start @media End File ********* */
+@media (max-width:1200px) {
+
+  .Layout-Container .Buttons-Container {
+    gap: 10px;
+    display: block;
+  }
+
+  .Layout-Container .Buttons-Container .left {
+    margin-top: 25px;
+    justify-content: end;
+  }
+
+  .Layout-Container .Table-Container {
+    overflow-x: auto;
+  }
+
+  .Receipts-container {
+    grid-template-columns: 1fr;
+  }
+
+  .Layout-Container .Receipt-Right {
+    overflow: hidden;
+  }
+
+  .Layout-Container .Receipt-Right .Table {
+    margin: 20px 0 !important;
+  }
+
+  .Layout-Container .Table {
+    width: 1200px;
+  }
+
+  .Form {
+    width: 92%;
+  }
+
+  .UnitsParent {
+    height: 200px;
+  }
+
+  .Form .Form-scroll {
+    height: 600px;
+    overflow-y: auto;
+    padding-bottom: 60px;
+  }
+
+}
+
+@media (max-width:710px) {
+  .Person-Details {
+    grid-template-columns: 1fr !important;
+    gap: 0;
+  }
+
+  .Person-Details .item h4 {
+    width: 125px !important;
+  }
+
+  .Person-Details .item h4,
+  .Person-Details .item p {
+    font-size: 13px !important;
+    font-weight: 600;
+  }
+
+  .card-item p {
+    font-weight: 400 !important;
+  }
+
+  .Layout-Container .Buttons-Container .Row {
+    width: auto !important;
+  }
+
+  .Layout-Container .Search-Container {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+
+  .Layout-Container .Search-Container .input-box {
+    margin-bottom: 20px !important;
+  }
+
+  .Alert {
+    width: 95%;
+  }
+
+  .Alert-container .Form-footer {
+    justify-content: center;
+
+  }
+
+  .Alert-text {
+    display: block;
+    gap: 10px;
+  }
+
+  .Alert-text i {
+    font-size: 25px;
+  }
+
+  .Receipts-container .Table-Container {
+    height: 300px;
+  }
+
+  .Receipt-Container .Person-Details {
+    display: block;
+  }
+
+  .Receipt-Container .Details-Total .itme {
+    width: 60%;
+  }
+
+  .Settings-Container {
+    grid-template-columns: 1fr;
+    padding-bottom: 25px;
+  }
+
+  .Settings-Container .Right img {
+    width: 150px;
+    margin-bottom: 20px;
+  }
+
+  .Settings-Container .SubContainer {
+    height: 550px;
+    overflow: auto;
+  }
+
+  .Settings-Container .SubContainer .ContainerStep {
+    padding: 30px 10px;
+  }
+
+}
+
+@media print {
+
+  .Layout-Menu,
+  .Filter-icon,
+  .Layout-Header,
+  .Search-Container,
+  .Buttons-Container .left,
+  .Receipt-Container .btns .btn,
+  .Layout-Container .Person-Details img,
+  .Layout-Container .Table.HideTh tr th:last-child,
+  .Layout-Container .Table.HideTh tr td:last-child,
+  .Layout-Container .Person-Details .btns {
+    display: none !important;
+  }
+
+  .Layout-Container .Buttons-Container * {
+    color: #000;
+  }
+
+  .Layout-Container .Buttons-Container .Row {
+    width: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    padding-right: 20px;
+  }
+
+  .Layout-Container .Buttons-Container .Row .item-icon {
+    background: none !important;
+    box-shadow: none !important;
+    border: var(--border) !important;
+  }
+
+  .Details-Company {
+    display: flex;
+    color: #000;
+  }
+
+  .Details-Company .Row {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .Wrapper-Tilte {
+    width: 100%;
+  }
+
+  .Layout-Container .Title-Container,
+  .Layout-Container .Title-Container2 {
+    text-align: center;
+    display: block;
+    margin-top: 5px;
+    color: #000 !important;
+  }
+
+  .Layout-Container .Person-Details {
+    grid-template-columns: 4fr 2.25fr !important;
+    border: none;
+    color: #000;
+    margin-bottom: 0;
+  }
+
+  .Layout-Container .Person-Details .item {
+    margin: 5px 0;
+  }
+
+  /* .Receipt-Container .Person-Details .item {
+    margin-top: 5px;
+  } */
+
+  .Layout-Container,
+  .Table-Container,
+  .Table-Container .Table {
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    color: #000;
+  }
+
+  .Layout-Container {
+    padding: 0 3px !important;
+  }
+
+  /* .Layout-Container *  */
+  .Table-Container .Table * {
+    color: #000 !important;
+    font-size: 15px !important;
+    font-weight: 500 !important;
+  }
+
+  .Table-Container .Table tr th span,
+  .Table-Container .Table tr th {
+    font-weight: 900 !important;
+  }
+
+  .FlexTD span:last-child {
+    padding: 0px 10px;
+  }
+}

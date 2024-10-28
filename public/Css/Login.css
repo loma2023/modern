@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    user-select: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+:root {
+    --Primary: #0284c7;
+    --Primary-Linear: linear-gradient(90deg, var(--Primary) 0%, #009be9 100%);
+    --Primary-Linear-Hover: linear-gradient(270deg, var(--Primary) 30%, #009be9 100%);
+
+    --Blue: #0075af;
+    --Blue-Linear: linear-gradient(90deg, var(--Blue) 0%, #0369a1 100%);
+    --Blue-Linear-Hover: linear-gradient(270deg, var(--Blue) 30%, #0369a1 100%);
+
+    --Cyan: #4099ff;
+    --Cyan-Linear: linear-gradient(270deg, var(--Cyan) 0%, #65adff 100%) !important;
+    --Cyan-Linear-Hover: linear-gradient(270deg, var(--Cyan) 0%, #54a4ff 100%) !important;
+
+    --Sky: #16b1ff;
+    --Sky-Linear: linear-gradient(90deg, var(--Sky) 0%, #3abdff 100%);
+    --Sky-Linear-Hover: linear-gradient(270deg, var(--Sky) 30%, #3abdff 100%);
+
+    --Teal: #2ed8b6;
+    --Teal-Linear: linear-gradient(90deg, var(--Teal) 0%, #14b8a6 100%);
+    --Teal-Linear-Hover: linear-gradient(270deg, var(--Teal) 30%, #14b8a6 100%);
+
+    --Green: #56ca00;
+    --Green-Linear: linear-gradient(90deg, var(--Green) 0%, #22c55e 100%);
+    --Green-Linear-Hover: linear-gradient(270deg, var(--Green) 30%, #22c55e 100%);
+
+    --Emerald: #059669;
+    --Emerald-Linear: linear-gradient(90deg, var(--Emerald) 0%, #10b981 100%);
+    --Emerald-Linear-Hover: linear-gradient(270deg, var(--Emerald) 30%, #10b981 100%);
+
+    --Orange: #ea580c;
+    --Orange-Linear: linear-gradient(90deg, var(--Orange) 0%, #f97316 100%);
+    --Orange-Linear-Hover: linear-gradient(270deg, var(--Orange) 30%, #f97316 100%);
+
+    --Yellow: #FFB64D;
+    --Yellow-Linear: linear-gradient(90deg, var(--Yellow) 0%, #ffbf64 100%);
+    --Yellow-Linear-Hover: linear-gradient(270deg, var(--Yellow) 30%, #ffbf64 100%);
+
+    --Rose: #e11d48;
+    --Rose-Linear: linear-gradient(90deg, var(--Rose) 0%, #FF5370 100%);
+    --Rose-Linear-Hover: linear-gradient(270deg, var(--Rose) 30%, #FF5370 100%);
+
+    --Gray: #b0b0b03d;
+    --Gray-Linear: linear-gradient(90deg, var(--Gray) 0%, #b6b6b63d 100%);
+    --Gray-Linear-Hover: linear-gradient(270deg, var(--Gray) 30%, #b6b6b63d 100%);
+
+    --Slate: #75757583;
+    --Slate-Linear: linear-gradient(90deg, var(--Slate) 0%, #75757563 100%);
+    --Slate-Linear-Hover: linear-gradient(270deg, var(--Slate) 30%, #75757563 100%);
+
+    --White: #f3f3f3;
+    --Black: #000;
+    --FFF: #fff;
+    --Secondary: #4b4b4b;
+    --bg-bar: #d9d9d9;
+    --CCC: #ccc;
+    --tr-bg: #b0b0b03d;
+    --border-color: #bababa;
+    --border: 1px solid var(--border-color);
+    --valueShadow: 0 0.1rem 0.25rem;
+    --box-shadow: 0 0.25rem 0.5rem rgba(58, 53, 65, 0.1);
+}
+
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url(../Img/bg.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.login-form {
+    background: rgba(64, 64, 64, 0.15);
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    padding: 15px 30px 30px;
+    border-radius: 8px;
+    backdrop-filter: blur(25px);
+    text-align: center;
+    color: white;
+    width: 400px;
+    box-shadow: 0px 0px 20px 10px rgba(0, 0, 0, 0.15);
+}
+
+.HeaderStep {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.layout-logo {
+    height: 70px;
+    padding: 0 15px;
+    direction: ltr;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.layout-logo img {
+    width: 45px;
+    margin-left: auto;
+}
+
+.logo-text {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif !important;
+    color: var(--Black);
+    font-size: 22px;
+    font-weight: 700;
+    margin-right: auto;
+    margin-left: 5px;
+    letter-spacing: 0.4px;
+}
+
+.login-title {
+    font-size: 35px;
+}
+
+.input-box {
+    margin: 20px 0;
+    position: relative;
+}
+
+.input-box input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    padding: 12px 12px 12px 45px;
+    border-radius: 5px;
+    outline: 3px solid transparent;
+    transition: 0.3s;
+    font-size: 17px;
+    color: white;
+}
+
+.input-box input::placeholder {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.input-box input:focus {
+    outline: 3px solid rgba(255, 255, 255, 0.3);
+}
+
+.input-box input::-ms-reveal {
+    filter: invert(100%);
+}
+
+.input-box span,
+.input-box i {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.input-box span {
+    right: 15px;
+}
+
+.input-box i {
+    left: 15px;
+}
+
+.remember-forgot-box {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    font-size: 15px;
+}
+
+.remember-forgot-box label {
+    display: flex;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.remember-forgot-box input {
+    accent-color: white;
+    cursor: pointer;
+}
+
+.remember-forgot-box a {
+    color: white;
+    text-decoration: none;
+}
+
+.remember-forgot-box a:hover {
+    text-decoration: underline;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 12px 0;
+    background: #0a456d;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background: #003d66d2;
+}
+
+.register {
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+.register a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.register a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width:1200px) {
+    .logo-text {
+        display: none;
+    }
+}

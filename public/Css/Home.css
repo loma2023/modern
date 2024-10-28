@@ -1,0 +1,333 @@
+/* Row  */
+
+.Row {
+    margin-top: 10px;
+}
+
+.monthly .Row {
+    margin: 0px;
+    margin-bottom: 5px;
+}
+
+/* Row card */
+
+.Row .card {
+    border: var(--border);
+    border-radius: 8px;
+    padding: 15px 20px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+.card-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--Black);
+}
+
+h3 {
+    font-size: 16px;
+    margin-bottom: 5px;
+    color: var(--Black);
+}
+
+p {
+    color: var(--Secondary);
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+
+.card-txt {
+    font-weight: 900;
+    margin-bottom: 40px;
+}
+
+/* card body */
+
+.card .card-body {
+    margin-top: 30px;
+    height: 320px;
+    overflow-y: auto;
+}
+
+.card .card-body::-webkit-scrollbar {
+    width: 0.3rem;
+}
+
+.card .card-body::-webkit-scrollbar-thumb {
+    background: var(--Teal);
+    border-radius: 5rem;
+}
+
+/* Congratulations  in Row 1 */
+
+.Congratulations span {
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--Primary);
+}
+
+/* .Congratulations .card-txt{
+    margin-bottom: 10px;
+} */
+
+.Congratulations h4 {
+    color: var(--Black);
+}
+
+.Congratulations img:first-child {
+    width: 166px;
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    opacity: 1;
+    z-index: -1;
+}
+
+.Layout-body.Dark .Congratulations img:first-child {
+    opacity: 0.02;
+}
+
+.Congratulations img:nth-child(2) {
+    width: 170px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: Image 1s linear both;
+}
+
+@keyframes Image {
+    0% {
+        opacity: 0;
+        transform: scale(0.75);
+    }
+
+    100% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+}
+
+/* Transactions  in Row 1 */
+
+.Transactions .card-item {
+    margin-bottom: 0px;
+}
+
+.Transactions .card-item p {
+    font-weight: 600;
+}
+
+.Transactions h3 {
+    color: var(--Black);
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 5px;
+}
+
+
+/* Salse card  in Row 2 */
+
+.sales-cart .card-body {
+    height: auto;
+}
+
+.sales-cart .between-sales {
+    color: var(--Black);
+    font-size: 32px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 50px;
+    margin-bottom: 10PX;
+}
+
+.sales-cart .cecrel {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: conic-gradient(var(--Primary) 0deg, var(--bg-bar) 0deg);
+}
+
+.sales-cart .cecrel::after {
+    position: absolute;
+    content: '';
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--White);
+}
+
+.sales-cart .cecrel .value {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--Primary);
+    z-index: 10;
+    font-family: sans-serif;
+}
+
+.sales-cart .left .line-graph {
+    position: relative;
+    width: 80px;
+    height: 5px;
+    background: var(--bg-bar);
+    margin-top: 10px;
+}
+
+.sales-cart .left .line-graph::after {
+    height: 5px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+}
+
+.sales-cart .card-item.Primary .left .line-graph::after {
+    animation: animation1 1.5s linear both;
+}
+
+.sales-cart .card-item.Teal .left .line-graph::after {
+    animation: animation2 1.5s linear both;
+}
+
+.sales-cart .card-item.Sky .left .line-graph::after {
+    animation: animation3 1.5s linear both;
+}
+
+@keyframes animation1 {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: var(--width-percent1)
+    }
+}
+
+@keyframes animation2 {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: var(--width-percent2)
+    }
+}
+
+@keyframes animation3 {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: var(--width-percent3)
+    }
+}
+
+/* collect & payment in Row 3 */
+
+.coll-pay {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 15px !important;
+}
+
+.coll-pay .card {
+    padding: 0px 5px !important;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.coll-pay .Collect {
+    border-left: var(--border);
+    /* height: 400px !important; */
+}
+
+.coll-pay .card:last-child {
+    border: none;
+}
+
+.coll-pay .Collect .left {
+    color: var(--Green);
+}
+
+.coll-pay .Payment .left {
+    color: var(--Rose);
+}
+
+
+/* summary */
+
+.summary {
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+
+.summary .card {
+    margin-bottom: 15px;
+}
+
+.summary .card:last-child {
+    margin-bottom: 0px;
+}
+
+.summary p {
+    font-size: 14px;
+}
+
+.mrg-t-25 {
+    margin-top: 45px;
+}
+
+/* @Media */
+
+@media (max-width: 1200px) {
+    .card .card-body {
+        height: auto;
+    }
+
+    .coll-pay .Collect {
+        border: none;
+    }
+
+    .coll-pay {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    @keyframes Image {
+        0% {
+            opacity: 0;
+            transform: scale(0.75);
+        }
+
+        100% {
+            opacity: 0.3;
+            transform: scale(1);
+        }
+    }
+}
+
+@media (max-width: 710px) {
+    .card-title {
+        font-size: 18px;
+    }
+
+    .card-txt {
+        font-size: 15px;
+        font-weight: 500;
+    }
+
+    .card-item p {
+        font-weight: 400 !important;
+    }
+}

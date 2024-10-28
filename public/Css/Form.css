@@ -1,0 +1,454 @@
+/* ********* Start Form-Container & Alert-container ********* */
+.Alert-container,
+.Form-Container {
+    width: 100%;
+    height: 100vh;
+    z-index: 200;
+    position: fixed;
+    top: -400px;
+    left: 0;
+    opacity: 0;
+    transform: scale(0);
+    pointer-events: none;
+    transition: all 0.4s ease-in-out;
+}
+
+.Alert-container.active,
+.Form-Container.active {
+    top: 0;
+    opacity: 1;
+    transform: scale(1);
+    pointer-events: auto;
+}
+
+.overlow {
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.3);
+    filter: blur(10px);
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: none;
+}
+
+.Alert-container.active .overlow,
+.Form-Container.active .overlow {
+    display: table !important;
+}
+
+.Alert,
+.Form {
+    max-width: 50rem;
+    margin: 55px auto;
+    outline: 0;
+    position: relative;
+    border-radius: 5px;
+    background: var(--White);
+    border: 2px solid var(--Cyan);
+    box-shadow: var(--box-shadow);
+    z-index: 98;
+}
+
+.Form-Product .Form {
+    margin: 40px auto;
+    max-width: 60rem;
+}
+
+.Alert,
+.Form-scroll {
+    padding: 1.5rem;
+}
+
+.Form .Table-Container {
+    height: 150px;
+}
+
+
+/* Alert */
+.Alert-text {
+    display: flex;
+    align-items: center;
+    /* gap: 10px; */
+    gap: 20px;
+}
+
+.Alert-text i {
+    /* font-size: 25px; */
+    font-size: 55px;
+    padding: 15px;
+    border-radius: 50%;
+    background: var(--Gray);
+    color: var(--FFF);
+}
+
+.Alert h3 {
+    font-size: 22px;
+    color: var(--Black);
+}
+
+.Alert h5 {
+    font-size: 18px;
+    margin-top: 20px;
+    text-transform: capitalize;
+    color: var(--Black);
+}
+
+/*  */
+.Form-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Form-header h3 {
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--Black);
+}
+
+.Form .X-Toast {
+    width: 30px;
+    height: 30px;
+    background: var(--White);
+    color: var(--Black);
+    border-radius: 5px 5px 0 5px;
+    box-shadow: 0 0.125rem 0.25rem rgba(161, 172, 184, 0.4);
+    font-size: 25px;
+    border: 2px solid var(--Cyan);
+    position: absolute;
+    top: -17px;
+    left: -17px;
+    cursor: pointer;
+}
+
+button:hover,
+.Form .X-Toast:hover {
+    transform: scale(0.97);
+}
+
+.Form-logo {
+    display: flex;
+    align-items: center;
+    direction: ltr;
+    opacity: 0.7 !important;
+}
+
+.Form-logo .logo-text {
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif !important;
+    color: var(--Black);
+    font-size: 22px;
+    font-weight: 700;
+    margin-right: auto;
+    margin-left: 10px;
+    letter-spacing: 0.4px;
+    opacity: 0.7 !important;
+    pointer-events: none;
+}
+
+.Form-logo img {
+    width: 35px;
+    margin-left: auto;
+}
+
+.Form-body {
+    margin-top: 35px;
+    position: relative;
+    flex: 1 1 auto;
+}
+
+.DivCodeTxt {
+    width: 60%;
+    /* height: 100%; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 150px;
+    direction: ltr;
+    overflow: hidden;
+}
+
+.DivCodeTxt input {
+    padding: 2px !important;
+    text-align: center;
+    font-size: 18px;
+}
+
+.UnitsParent {
+    height: 150px;
+    padding: 10px;
+    border: var(--border);
+    overflow-y: auto;
+}
+
+.UnitsParent .input-box {
+    margin-bottom: 5px !important;
+}
+
+.UnitsParent input {
+    height: 40px !important;
+    padding: 2px !important;
+}
+
+.UnitsParent h4 {
+    color: var(--Black);
+}
+
+.input-box {
+    margin-bottom: 30px !important;
+    position: relative;
+    width: 100% !important;
+}
+
+.input-box span,
+.input-box i {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    color: #bfbfbf;
+    min-width: 35px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.input-box span {
+    right: 0px;
+}
+
+.input-box i {
+    left: 0;
+}
+
+.input-box label {
+    display: block;
+    width: auto;
+    position: absolute;
+    top: 49%;
+    right: 40px;
+    transform: translateY(-50%);
+    background: var(--White);
+    color: var(--Secondary);
+    font-size: 1rem;
+    font-weight: 800;
+    transition: 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* .Form-Product .Form .input-box label {
+    width: 65%;
+} */
+
+textarea,
+input,
+select {
+    height: 45px;
+    width: 100%;
+    outline: none;
+    font-size: 1rem;
+    font-weight: 800;
+    border: var(--border);
+    color: transparent;
+    border-radius: 3px;
+    padding: 2px 40px;
+    background: var(--White);
+    text-align: start;
+    transition: 0.3s all;
+}
+
+textarea {
+    min-width: 100%;
+    min-height: 100px;
+    max-height: 150px;
+    max-width: 100%;
+}
+
+input::placeholder {
+    color: transparent;
+}
+
+.Table input::placeholder,
+input:focus::placeholder {
+    color: var(--Secondary) !important;
+}
+
+input[type="number"] {
+    padding: 2px 40px 2px 10px;
+}
+
+select,
+input[type="button"] {
+    cursor: pointer;
+    color: var(--Black);
+}
+
+input[type="file"] {
+    padding-left: 0;
+    padding-top: 10px;
+}
+
+input[type="tel"] {
+    text-align: end;
+}
+
+input[type="checkbox"] {
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.Table input .Select-box.active input,
+input:focus,
+input:valid,
+select:focus,
+select:valid {
+    border: 1px solid var(--Cyan);
+    border-radius: 3px 0 3px 3px;
+    color: var(--Black);
+}
+
+
+.Table input {
+    color: var(--Black);
+}
+
+.Select-box.active span,
+.Select-box.active i,
+input:focus~span,
+input:valid~span,
+select:focus~span,
+select:valid~span,
+input:focus~i,
+input:valid~i {
+    color: var(--Cyan);
+}
+
+select:focus~label,
+select:valid~label,
+input:focus~label,
+input:valid~label,
+.Form-Product .Form input:focus~label,
+.Form-Product .Form input:valid~label,
+.Select-box.active label {
+    top: -9.8px;
+    right: 0px;
+    font-size: 0.9em;
+    border: 1px solid var(--Cyan);
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    padding: 3px 10px 0;
+    color: var(--Secondary);
+}
+
+.toggle-box input:focus~label,
+.toggle-box input:valid~label {
+    border: none;
+}
+
+input.Required,
+input.Required,
+select.Required,
+select.Required {
+    border: 1px solid var(--Rose);
+    animation: shake 300ms;
+}
+
+@keyframes shake {
+
+    75%,
+    25% {
+        transform: translateX(10px);
+    }
+
+    50% {
+        transform: translateX(-10px);
+    }
+}
+
+input.Required~span,
+input.Required~span,
+select.Required~span,
+select.Required~span,
+input.Required~i,
+input.Required~i {
+    color: var(--Rose);
+    animation: shake 300ms;
+}
+
+select.Required~label,
+select.Required~label,
+input.Required~label,
+input.Required~label {
+    color: var(--Rose);
+}
+
+select.Required:focus~label,
+select.Required:valid~label,
+input.Required:focus~label,
+input.Required:valid~label {
+    border: 1px solid var(--Rose);
+    border-bottom: none;
+}
+
+.Form-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 25px;
+}
+
+.Form-footer button {
+    margin: 0 5px;
+    color: #fff;
+}
+
+.toggle-box input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-box label {
+    display: inline-block;
+    width: 40px !important;
+    height: 20px !important;
+    background: #ccc;
+    border-radius: 10px !important;
+    position: relative;
+    cursor: pointer;
+    margin-top: 25px;
+}
+
+.toggle-box label::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+
+.toggle-box input[type="checkbox"]:checked+label {
+    background: var(--Primary);
+}
+
+.toggle-box input[type="checkbox"]:checked+label::before {
+    transform: translateX(-20px);
+}
+
+@media (max-width:610px) {
+    .Form-logo .logo-text {
+        display: none;
+    }
+
+    .DivCodeTxt {
+        width: 100% !important;
+    }
+}
+
+/* ********* End  Form-Container ********* */

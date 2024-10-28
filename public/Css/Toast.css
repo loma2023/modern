@@ -1,0 +1,86 @@
+.Toasts {
+    width: 370px;
+    height: auto;
+    z-index: 201;
+    overflow: hidden;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    direction: rtl;
+}
+
+.Toasts .Toast {
+    padding: 20px;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    color: var(--FFF);
+    margin: 15px;
+    background: var(--Sky) !important;
+    box-shadow: 0 0.25rem 1rem var(--Sky) !important;
+    transition: all .5s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+    position: relative;
+    left: -100%;
+}
+
+.Toast.active {
+    left: 0;
+}
+
+.Toasts .Toast .X-Toast {
+    width: 0.8em;
+    height: 0.8em;
+    border-radius: 0.375rem;
+    padding: 0.45rem;
+    background-size: 0.625em;
+    transition: all .23s ease-in-out;
+    background: var(--Sky);
+    box-shadow: 0 0.1875rem 0.375rem 0 var(--Sky);
+    box-sizing: initial;
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    cursor: pointer;
+}
+
+.Toast {
+    display: flex;
+    align-items: start;
+    gap: 10px;
+}
+
+.Toast-Txt {
+    margin-top: 10px;
+    font-size: 1rem;
+    line-height: 30px;
+}
+
+.Toast i {
+    font-size: 23px;
+}
+
+#Success {
+    background: var(--Green) !important;
+    box-shadow: 0 0.25rem 1rem var(--Green) !important;
+}
+
+#Success .X-Toast {
+    background: var(--Green) !important;
+    box-shadow: 0 0.1875rem 0.375rem 0 var(--Green) !important;
+}
+
+#Error {
+    background: var(--Rose) !important;
+    box-shadow: 0 0.25rem 1rem var(--Rose) !important;
+}
+
+#Error .X-Toast {
+    background: var(--Rose) !important;
+    box-shadow: 0 0.1875rem 0.375rem 0 var(--Rose) !important;
+}
+
+@media (max-width:1000px) {
+    .Toasts {
+        width: 100%;
+        bottom: 0;
+    }
+}

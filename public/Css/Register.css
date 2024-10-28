@@ -1,0 +1,334 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  user-select: none;
+  /* font-family: 'jazeera', 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; */
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+:root {
+  --Primary: #0284c7;
+  --Primary-Linear: linear-gradient(90deg, var(--Primary) 0%, #009be9 100%);
+  --Primary-Linear-Hover: linear-gradient(270deg, var(--Primary) 30%, #009be9 100%);
+
+  --Blue: #0075af;
+  --Blue-Linear: linear-gradient(90deg, var(--Blue) 0%, #0369a1 100%);
+  --Blue-Linear-Hover: linear-gradient(270deg, var(--Blue) 30%, #0369a1 100%);
+
+  --Cyan: #4099ff;
+  --Cyan-Linear: linear-gradient(270deg, var(--Cyan) 0%, #65adff 100%) !important;
+  --Cyan-Linear-Hover: linear-gradient(270deg, var(--Cyan) 0%, #54a4ff 100%) !important;
+
+  --Sky: #16b1ff;
+  --Sky-Linear: linear-gradient(90deg, var(--Sky) 0%, #3abdff 100%);
+  --Sky-Linear-Hover: linear-gradient(270deg, var(--Sky) 30%, #3abdff 100%);
+
+  --Teal: #2ed8b6;
+  --Teal-Linear: linear-gradient(90deg, var(--Teal) 0%, #14b8a6 100%);
+  --Teal-Linear-Hover: linear-gradient(270deg, var(--Teal) 30%, #14b8a6 100%);
+
+  --Green: #56ca00;
+  --Green-Linear: linear-gradient(90deg, var(--Green) 0%, #22c55e 100%);
+  --Green-Linear-Hover: linear-gradient(270deg, var(--Green) 30%, #22c55e 100%);
+
+  --Emerald: #059669;
+  --Emerald-Linear: linear-gradient(90deg, var(--Emerald) 0%, #10b981 100%);
+  --Emerald-Linear-Hover: linear-gradient(270deg, var(--Emerald) 30%, #10b981 100%);
+
+  --Orange: #ea580c;
+  --Orange-Linear: linear-gradient(90deg, var(--Orange) 0%, #f97316 100%);
+  --Orange-Linear-Hover: linear-gradient(270deg, var(--Orange) 30%, #f97316 100%);
+
+  --Yellow: #FFB64D;
+  --Yellow-Linear: linear-gradient(90deg, var(--Yellow) 0%, #ffbf64 100%);
+  --Yellow-Linear-Hover: linear-gradient(270deg, var(--Yellow) 30%, #ffbf64 100%);
+
+  --Rose: #e11d48;
+  --Rose-Linear: linear-gradient(90deg, var(--Rose) 0%, #FF5370 100%);
+  --Rose-Linear-Hover: linear-gradient(270deg, var(--Rose) 30%, #FF5370 100%);
+
+  --Gray: #b0b0b03d;
+  --Gray-Linear: linear-gradient(90deg, var(--Gray) 0%, #b6b6b63d 100%);
+  --Gray-Linear-Hover: linear-gradient(270deg, var(--Gray) 30%, #b6b6b63d 100%);
+
+  --Slate: #75757583;
+  --Slate-Linear: linear-gradient(90deg, var(--Slate) 0%, #75757563 100%);
+  --Slate-Linear-Hover: linear-gradient(270deg, var(--Slate) 30%, #75757563 100%);
+
+  --White: #fff;
+  --Black: #000;
+  --FFF: #fff;
+  --Secondary: #4b4b4b;
+  --bg-bar: #d9d9d9;
+  --CCC: #ccc;
+  --tr-bg: #b0b0b03d;
+  --border-color: #bababa;
+  --border: 1px solid var(--border-color);
+  --valueShadow: 0 0.1rem 0.25rem;
+  --box-shadow: 0 0.25rem 0.5rem rgba(58, 53, 65, 0.1);
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  background-color: hsl(229, 24%, 87%);
+  overflow: hidden;
+  direction: rtl;
+}
+
+button {
+  font-family: "Ubuntu", sans-serif;
+}
+
+.MainContainer {
+  display: grid;
+  grid-template-columns: 1fr 2.65fr;
+  background-color: rgb(255, 255, 255);
+  margin-top: 3%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  box-shadow: 20px 20px 20px rgba(47, 18, 18, 0.101);
+  width: 1000px;
+  height: 568px;
+  position: relative;
+  overflow: hidden;
+}
+
+.LayoutSteps {
+  width: 100%;
+  height: 568px;
+  background-color: rgba(30, 16, 186, 0);
+  background-image: url(../Img/bg-sidebar-desktop.svg);
+}
+
+.LayoutSteps .ItemStep {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin: 40px 35px;
+}
+
+.ItemStep .circle {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  border: solid 1px white;
+  color: white;
+  position: relative;
+}
+
+.ItemStep.active .circle {
+  color: black;
+  background-color: rgb(255, 255, 255);
+}
+
+.ItemStep.Done .circle {
+  color: #fff;
+  background: var(--Teal);
+  font-size: 30px;
+}
+
+.ItemStep .circle::after {
+  content: '';
+  width: 4px;
+  height: 48px;
+  background: #0adc9db9;
+  transform: translateX(-50%);
+  position: absolute;
+  top: 40px;
+  left: 50%;
+}
+
+.ItemStep .LastCircle::after {
+  display: none;
+}
+
+.ItemStep p {
+  margin: 0 0 5px;
+  font-size: 15px;
+  color: hsl(0, 0%, 84%);
+}
+
+.ItemStep h4 {
+  margin: 0;
+  color: white;
+  font-size: 20px;
+}
+
+/* كونتينر الفورم */
+
+.SubContainer {
+  background-color: rgba(210, 96, 14, 0);
+  width: 100%;
+  height: 550px;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.SubContainer .ContainerStep {
+  padding: 30px;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  right: -100%;
+  transition: all .2s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+
+.SubContainer .ContainerStep.active {
+  right: 0;
+  transition: all .2s cubic-bezier(0.68, -0.55, 0.265, 1.35);
+}
+
+.SubContainer .ContainerStep.ThankYou {
+  display: block;
+  text-align: center;
+  padding-top: 100px;
+  width: 100%;
+}
+
+.SubContainer .ContainerStep.ThankYou h1 {
+  margin-top: 10px;  
+}
+
+.SubContainer .ContainerStep.ThankYou p {
+  margin: 20px 0;
+  font-size: 22px;
+}
+
+.ContainerStep p {
+  font-size: 20px;
+  margin-top: 30px;
+}
+
+
+.Row {
+  display: grid;
+  gap: 10px;
+}
+
+.grid-2 {
+  grid-template-columns: repeat(2, 1fr) !important;
+}
+
+/* FooterStep  */
+.FooterStep {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(0, 255, 51, 0);
+  width: 100%;
+}
+
+.FooterStep button {
+  padding: 15px 20px;
+  width: 120px;
+  background-color: hsl(213, 96%, 18%);
+  color: white;
+  border-radius: 5px;
+  border: solid 1px rgba(0, 0, 255, 0);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.FooterStep .nextStep:hover {
+  background-color: hsla(243, 100%, 62%, 0.423);
+}
+
+.FooterStep .GoBack {
+  border: 1px dashed rgba(77, 77, 77, 0.617);
+  cursor: pointer;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 16px;
+  color: hsl(231, 11%, 63%);
+}
+
+.FooterStep .GoBack:hover {
+  background-color: rgba(26, 25, 25, 0.163);
+}
+
+.SubContainer .ContainerStep.ThankYou .FooterStep {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.SubContainer .ContainerStep.ThankYou .FooterStep button {
+  width: 150px;
+  font-size: 30px;
+  padding: 5px;
+  background: green;
+}
+
+
+@media (max-width:1200px) {
+  .MainContainer {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    border-radius: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+   h1 {
+    font-size: 25px;
+  }
+
+  .LayoutSteps {
+    width: 100%;
+    height: 120px;
+    background-color: rgba(30, 16, 186, 0);
+    background: url(../Img/bg-sidebar-mobile.svg) no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .LayoutSteps .ItemStep {
+    display: block;
+    margin: 40px 20px;
+  }
+
+
+  .LayoutSteps .Stepinner {
+    display: none;
+  }
+
+  .ItemStep .circle::after {
+    content: '';
+    width: 40px;
+    height: 4px;
+    background: #0adc9db9;
+    transform: translateX(-50%);
+    position: absolute;
+    top: 50%;
+    left: -20px;
+  }
+
+  .SubContainer .ContainerStep {
+    width: 100%;
+    height: 500px;
+    overflow: auto;
+  }
+
+  .DivCodeTxt {
+    width: 100%;
+    margin-bottom: 150px;
+  }
+
+  .grid-2 {
+    grid-template-columns: repeat(1, 1fr) !important;
+  }
+
+
+}
