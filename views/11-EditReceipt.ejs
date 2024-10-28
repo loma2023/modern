@@ -1,0 +1,300 @@
+<%- include('Partials/Header.ejs'); -%>
+
+    <%- include('Partials/Menu.ejs'); -%>
+
+    <% let MyReceipt = MainData.GeneralData.find(item => item._id == FileID) %>
+    <% console.log(MyReceipt) %>
+
+        <div class="Layout-Container">
+            <div class="Receipts-container">
+                <div style="display: none;">
+                    <%- include('Partials/DetailsCompany.ejs'); -%>
+                </div>
+                <div class="Receipt-Right">
+                    <div class="Row grid-3">
+                        <div class="input-box">
+                            <select class="DocType" onchange="AutoSave()">
+                                <% if (MyReceipt.DocType === "مشتريات") { %>
+                                    <option value="مشتريات" selected hidden>مشتريات</option>                                 
+                                <% } %>
+                                <% if (MyReceipt.DocType === "مرتجع مشتريات") { %>
+                                    <option value="مرتجع مشتريات" selected hidden>مرتجع مشتريات </option>
+                                <% } %>
+                                <% if (MyReceipt.DocType === "مبيعات") { %>
+                                    <option value="مبيعات" selected hidden>مبيعات</option>
+                                <% } %>
+                                <% if (MyReceipt.DocType === "مرتجع مبيعات") { %>
+                                    <option value="مرتجع مبيعات" selected hidden>مرتجع مبيعات</option>
+                                <% } %>
+                                <% if (Title.includes("مشتريات")) { %>
+                                    <option value="مشتريات">مشتريات</option>
+                                    <option value="مرتجع مشتريات"> مرتجع مشتريات </option>
+                                <% } %>
+                                <% if (Title.includes("مبيعات")) { %>
+                                    <option value="مبيعات">مبيعات</option>
+                                    <option value="مرتجع مبيعات"> مرتجع مبيعات </option>
+                                <% } %>
+                            </select>
+                            <label>نوع الفاتورة</label>
+                            <span class='bx bx-receipt'></span>
+                        </div>
+                        <div class="input-box">
+                            <input type="text" class="DocDate" onchange="AutoSave()" onfocus="(this.type='date')"
+                                onblur="(this.type='text')" value="<%= MyReceipt.DocDate%>" required>
+                            <label> تاريخ الفاتورة</label>
+                            <i class="bx bx-calendar"></i>
+                            <span class='bx bx-calendar'></span>
+                        </div>
+                        <div class="Select-box active">
+                            <% let Datas=MainData.CustomersData%>
+                                <% if (Title.includes("مشتريات")) { %>
+                                    <% Datas=MainData.SuppliersData %>
+                                <% } %>
+                                <% let NamePerson = Datas.find(item => item._id == MyReceipt.Name).Name %>
+                                            <div class="input-box">
+                                                <input type="button" id="<%= MyReceipt.Name %>" class="NamePerson"
+                                                    onfocus="FocusInput(event)" value="<%= NamePerson %>" required>
+                                                <label>الاسم *</label>
+                                                <span class="bx bx-user"></span>
+                                                <i class="bx bx-chevron-down"></i>
+                                            </div>
+                                            <div class="SelectMenu">
+                                                <div class="input-box">
+                                                    <input type="search" placeholder="ابحث هنا .. "
+                                                        class="SearchInput Person" onblur="BlurInput(event)"
+                                                        onkeyup="SearchSelect(event)">
+                                                    <span class="bx bx-search"></span>
+                                                </div>
+                                                <div class="SelectItmes">
+                                                    <% Datas.forEach(Person=> { %>
+                                                        <% if (Person.Status != "FALSE") { %>                                                         
+                                                            <h3 onclick="AutoSave()" id="<%= Person._id %>">
+                                                                <%= Person.Name %>
+                                                            </h3>
+                                                        <% } %>
+                                                        <% }) %>
+                                                </div>
+                                            </div>
+                        </div>
+                    </div>
+
+                    <div class="Table-Container">
+                        <table class="Table">
+                            <thead>
+                                <tr>
+                                    <th>barcode</th>
+                                    <th>الصنف</th>
+                                    <th>الوحدة</th>
+                                    <th>الكمية</th>
+                                    <th>السعر</th>
+                                    <th>الاجمالي</th>
+                                    <th>الاجراء</th>
+                                </tr>
+                            </thead>
+                            <tbody class="Table-body HideFirstRow">
+                                <tr>
+                                    <td width="12%">
+                                        <input type="text" class="Barcode Part1" placeholder="Barcode"
+                                            onchange="BarcodeReader(event)">
+                                    </td>
+                                    <td width="34%">
+                                        <div class="Select-box">
+                                            <div class="input-box">
+                                                <input type="button" id="empty" class="NameItem"
+                                                    onfocus="FocusInput(event)" value="الصنف" required>
+                                                <span class="bx bx-cart"></span>
+                                                <i class="bx bx-chevron-down"></i>
+                                            </div>
+                                            <div class="SelectMenu">
+                                                <div class="input-box">
+                                                    <input type="search" class="SearchInput Product"
+                                                        placeholder="ابحث هنا .. " onblur="BlurInput(event)"
+                                                        onkeyup="SearchSelect(event)">
+                                                    <span class="bx bx-search"></span>
+                                                </div>
+                                                <div class="SelectItmes">
+                                                    <% MainData.ProductsData.forEach((Product,index)=> { %>
+                                                        <% if (Product.Status != "FALSE") { %>
+                                                        <h3 class="Part1" onclick="GetUnitsAndPriceItem(event)"
+                                                            index="<%= index %>" id="<%= Product._id %>">
+                                                            <%= Product.Name %>
+                                                        </h3>
+                                                        <% } %>
+                                                        <% }) %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td width="15%">
+                                        <select id="UnitsItem" class="UnitsItem" onchange="GetUnitsAndPriceItem(event)">
+                                            <option value="empty" selected disabled>الوحده</option>
+                                        </select>
+                                    </td>
+                                    <td width="12%">
+                                        <input type="text" onchange="TotalItem(event)" onkeyup="TotalItem(event)"
+                                            class="QtyItem" value="0" onfocus="(this.type='number')"
+                                            onblur="(this.type='text')" min="1">
+                                    </td>
+                                    <td width="12%"><input class="PriceItem" type="text" value="0.00" disabled></td>
+                                    <td width="12%"><input class="TotalItem" type="text" value="0.00" disabled></td>
+                                    <td width="3%">
+                                        <div class="FlexTD">
+                                            <div class="btn-box">
+                                                <div class="tooltip">اضافة صنف</div>
+                                                <button type="button" class="btn btn-plus bx bx-plus" id="1"
+                                                    onclick="AddOrRemoveItem(event)">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% MyReceipt.Products.forEach(Product => { %>
+                                    <% let MyProduct = MainData.ProductsData.find(item => item._id == Product.NameItem )%>
+                                <tr>
+                                    <td width="12%">
+                                        <input type="text" class="Barcode Part1" placeholder="Barcode"
+                                           value="<%= MyProduct.Barcode %>" onchange="BarcodeReader(event)">
+                                    </td>
+                                    <td width="34%">
+                                        <div class="Select-box">
+                                            <div class="input-box">
+                                                <input type="button" id="<%= Product.NameItem %>" class="NameItem"
+                                                    onfocus="FocusInput(event)" value="<%= MyProduct.Name %>" required>
+                                                <span class="bx bx-cart"></span>
+                                                <i class="bx bx-chevron-down"></i>
+                                            </div>
+                                            <div class="SelectMenu">
+                                                <div class="input-box">
+                                                    <input type="search" class="SearchInput Product"
+                                                        placeholder="ابحث هنا .. " onblur="BlurInput(event)"
+                                                        onkeyup="SearchSelect(event)">
+                                                    <span class="bx bx-search"></span>
+                                                </div>
+                                                <div class="SelectItmes">
+                                                    <% MainData.ProductsData.forEach((Product,index)=> { %>
+                                                        <h3 class="Part1" onclick="GetUnitsAndPriceItem(event)"
+                                                            index="<%= index %>" id="<%= Product._id %>">
+                                                            <%= Product.Name %>
+                                                        </h3>
+                                                        <% }) %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td width="15%">
+                                        <select id="UnitsItem" class="UnitsItem" onchange="GetUnitsAndPriceItem(event)">
+                                            <% MyProduct.Units.forEach(Unit => { %>
+                                                <option ConFactor="<%= Unit.ConFactor %>"
+                                                            PriceUnitBuy="<%= Unit.PriceUnitBuy %>"
+                                                             PriceUnitSales="<%= Unit.PriceUnitSales %>"
+                                                                value="<%= Unit.NameUnit %>"><%= Unit.NameUnit %></option>                                            
+                                            <% }) %>
+                                        </select>
+                                    </td>
+                                    <td width="12%">
+                                        <input type="text" onchange="TotalItem(event)" onkeyup="TotalItem(event)"
+                                            class="QtyItem" value="<%= Product.QtyItem %>" onfocus="(this.type='number')"
+                                            onblur="(this.type='text')" min="1">
+                                    </td>
+                                    <td width="12%"><input class="PriceItem" type="text" value="<%= Product.PriceItem %>" disabled></td>
+                                    <td width="12%"><input class="TotalItem" type="text" value="<%= Product.TotalItem %>" disabled></td>
+                                    <td width="3%">
+                                        <div class="FlexTD">
+                                            <div class="btn-box">
+                                                <div class="tooltip">اضافة صنف</div>
+                                                <button type="button" class="btn btn-plus bx bx-plus" id="1"
+                                                    onclick="AddOrRemoveItem(event)">
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <% }) %>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="Receipt-left">
+                    <div class="card-item nu-Receipt Orange">
+                        <i class='item-icon bx bx-receipt'></i>
+                        <div class="center">
+                            <h3>رقم الفاتورة</h3>
+                        </div>
+                        <div class="left">
+                            <h3 class="NuReceipt"><%= MyReceipt.DocNu %></h3>
+                        </div>
+                    </div>
+                    <div class="card-item Primary">
+                        <i class='item-icon bx bx-dollar'></i>
+                        <div class="center">
+                            <h3>اجمالي الفاتورة</h3>
+                        </div>
+                        <div class="left">
+                            <h3 class="SubTotal">0.00</h3>
+                        </div>
+                    </div>
+                    <div class="card-item Yellow">
+                        <i class='item-icon bx bx-dollar'></i>
+                        <div class="center">
+                            <h3>الخصم </h3>
+                        </div>
+                        <div class="left">
+                            <input type="text" class="Discount" onchange="TotalReceipt()" onkeyup="TotalReceipt()"
+                                value="<%= MyReceipt.Discount %>" onfocus="(this.type='number')" onblur="(this.type='text')" min="0">
+                        </div>
+                    </div>
+                    <div class="card-item Emerald">
+                        <i class='item-icon bx bx-dollar'></i>
+                        <div class="center">
+                            <h3>صافي الفاتورة</h3>
+                        </div>
+                        <div class="left">
+                            <h3 class="TotalReceipt">0.00</h3>
+                        </div>
+                    </div>
+                    <% if (Title.includes("مبيعات")) { %>
+                        <div class="card-item Teal">
+                            <i class='item-icon bx bx-dollar'></i>
+                            <div class="center">
+                                <h3>ربح الفاتورة</h3>
+                            </div>
+                            <div class="left">
+                                <h3 class="ProfitReceipt">0.00</h3>
+                            </div>
+                        </div>
+                        <% } %>
+
+                            <div class="input-box mrg-t-50">
+                                <select id="TypeAmount" class="TypeAmount">
+                                    <% if (MyReceipt.TypeAmount === "نقدي") { %>
+                                        <option value="نقدي" selected hidden>نقدي</option>
+                                    <% } %>
+                                    <% if (MyReceipt.TypeAmount === "آجل") { %>
+                                        <option value="آجل" selected hidden>آجل</option>
+                                    <% } %>
+                                    <option value="نقدي">نقدي</option>
+                                    <option value="آجل">آجل</option>
+                                </select>
+                                <label>طريقة الدفع </label>
+                                <span class='bx bx-receipt'></span>
+                            </div>
+                            <button type="button" Status="True" id="<%= MyReceipt._id %>" onclick="NewReceipt(event)" class="btn btn-Save btn-Receipt">حفظ الفاتورة</button>
+                            <div class="btn-box">
+                                <!-- <button type="button" onclick="location.reload()" class="btn btn-Save">فاتورة جديدة</button> -->
+                                <button type="button" Status="True" id="<%= MyReceipt._id %>" onclick="NewReceipt(event)" class="btn btn-print btn-Receipt">حفظ وطباعة</button>
+                           </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <%- include('Partials/Footer.ejs'); -%>
+
+            <script src="Js/13-Receipts.js"></script>
+            <script>TotalReceipt()</script>
+            </body>
+
+            </html>

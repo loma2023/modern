@@ -1,0 +1,61 @@
+<%- include('Partials/Header.ejs'); -%>
+
+    <%- include('Partials/Menu.ejs'); -%>
+
+        <div class="Layout-Container">
+
+            <%- include('Partials/DetailsCompany.ejs'); -%>
+
+            <div class="Wrapper-Tilte">
+                <h1 class="Title-Container"><%= Title %></h1>
+                <div class="line">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+            <div class="Buttons-Container">
+                <div class="right">
+                    <div class="Row grid-4">
+                        <div class="card-item Green">
+                            <i class='item-icon bx bx-cart'></i>
+                            <div class="center">
+                                <h3 class="TableLength">0.00</h3>
+                                <p>عدد الاصناف </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="left">
+                    <%- include('Partials/Buttons.ejs'); -%>
+                </div>
+            </div>
+
+            <div class="Table-Container">
+                <table class="Table">
+                    <thead>
+                        <tr>
+                            <th>م</th>
+                            <th>باركود</th>
+                            <th>
+                                <div class="FlexTH">
+                                    <Span> المنتج</Span>
+                                    <i id="Name" class='bx bx-filter-alt Filter-icon' onclick="SortMyData(event)"></i>
+                                </div>
+                            </th>
+                            <th>سعر كل وحدة</th>
+                        </tr>
+                    </thead>
+                    <tbody class="Table-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <%- include('Partials/Footer.ejs'); -%>
+
+            <script src="Js/10-ProductsList.js"></script>
+
+            </body>
+
+            </html>

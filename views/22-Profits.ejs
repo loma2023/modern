@@ -1,0 +1,63 @@
+<%- include('Partials/Header.ejs'); -%>
+
+    <%- include('Partials/Menu.ejs'); -%>
+
+        <div class="Layout-Container">
+            <%- include('Partials/DetailsCompany.ejs'); -%>
+            <div class="Wrapper-Tilte">
+                <h1 class="Title-Container"><%= Title %></h1>
+                <div class="line">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+                <div class="Buttons-Container">
+                    <div class="right">
+                        <div class="Row grid-4">
+                            <div class="card-item Primary">
+                                <i class='item-icon bx bx-dollar'></i>
+                                <div class="center">
+                                    <h3 class="ProfitsThisMonth">0.00</h3>
+                                    <p>ربح الشهر الحالي</p>
+                                </div>
+                            </div>
+                            <div class="card-item Teal">
+                                <i class='item-icon bx bx-dollar'></i>
+                                <div class="center">
+                                    <h3 class="ProfitsThisYear">0.00</h3>
+                                    <p>ربح العام الحالي</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left">
+                        <%- include('Partials/Buttons.ejs'); -%>
+                    </div>
+                </div>
+
+                <div class="Table-Container">
+                    <table class="Table">
+                        <thead>
+                            <tr>
+                                <th>الشهر</th>
+                                <th>صافي المبيعات</th>
+                                <th>تكلفة البضاعة المباعه</th>
+                                <th>مجمل الربح</th>
+                                <th>الايرادات</th>
+                                <th>المصروفات</th>
+                                <th>صافي الربح</th>
+                            </tr>
+                        </thead>
+                        <tbody class="Table-body"></tbody>
+                    </table>
+                </div>
+        </div>
+
+        <%- include('Partials/Footer.ejs'); -%>
+
+            <script src="Js/24-Profits.js"></script>
+
+            </body>
+
+            </html>

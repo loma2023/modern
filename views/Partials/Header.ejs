@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="img/Logo.png" />
+    <link rel="stylesheet" href="Css/Main.css">
+    <link rel="stylesheet" href="Css/Style.css">
+    <link rel="stylesheet" href="Css/Form.css">
+    <link rel="stylesheet" href="Css/Toast.css">
+    <title><%= Title %></title>
+</head>
+
+<body>
+    <div class="Layout-body active <% if (User.DarkMood === true) { %> Dark <% } %>">
+    <div class="Loader" <% if (Title.includes("فاتورة") || Title.includes("الاعدادات")) { %> style="display:none" <% } %>></div>

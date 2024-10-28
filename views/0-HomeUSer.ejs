@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="Img/Logo.png" />
+    <link rel="stylesheet" href="Css/Main.css">
+    <link rel="stylesheet" href="Css/Home.css">
+    <title>الصفحة الرئيسية</title>
+</head>
+
+<body>
+    <div class="Layout-body active <% if (User.DarkMood === true) { %> Dark <% } %>">
+        <%- include('Partials/Menu.ejs'); -%>
+            <div class="Layout-Container">
+                <div style="display: none;">
+                    <%- include('Partials/DetailsCompany.ejs'); -%>
+                </div>
+                <div class="Row ">
+                    <div class="card Congratulations">
+                        <h1 class="card-title">مَرَحَبًا <%= User.Username %> 👋♥</h1>
+                        <p class="card-txt"></p>
+                        <span class="PriceOfDollar">0$</span>
+                        <h4 class="ToDayDollar">سعر الدولار اليوم</h4>
+                        <div>
+                            <img src="Img/light.png" />
+                            <img src="Img/userImg.png" alt=" " />
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
+        integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
+        crossorigin="anonymous"></script>
+
+    <script src="Js/1-Main.js"></script>
+    <script src="Js/2-Notifications.js"></script>
+    <script src="Js/3-HomeUser.js"></script>
+
+</body>
+
+</html>

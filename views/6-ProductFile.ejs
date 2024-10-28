@@ -1,0 +1,203 @@
+<%- include('Partials/Header.ejs'); -%>
+
+    <%- include('Partials/Menu.ejs'); -%>
+        <div class="Layout-Container">
+
+            <%- include('Partials/DetailsCompany.ejs'); -%>
+                <div class="Wrapper-Tilte">
+                    <h1 class="Title-Container2"><%= Title %></h1>
+                </div>
+                
+                <div class="Person-Details FileID" id="<%= FileID %>" index="<%= FileIndex %>">
+                    <div class="right">
+                        <div class="item">
+                            <h4>اسم المنتج</h4>
+                            <p class="Name"></p>
+                        </div>
+                        <div class="item">
+                            <h4>باركود</h4>
+                            <p class="Barcode"></p>
+                        </div>
+                        <div class="item">
+                            <h4>الوحدات</h4>
+                            <p class="Units"></p>
+                        </div>
+                        <div class="item">
+                            <h4>حد الطلب</h4>
+                            <p class="MinQty"></p>
+                        </div>
+                    </div>
+                    <div class="left">
+                        <div class="item">
+                            <h4>اجمالي الوارد</h4>
+                            <p class="QtyIn"></p>
+                        </div>
+                        <div class="item">
+                            <h4>اجمالي الصادر</h4>
+                            <p class="QtyOut"></p>
+                        </div>
+                        <div class="item">
+                            <h4>الرصيد</h4>
+                            <p class="Balance"></p>
+                        </div>
+                        <%- include('Partials/Btns.ejs'); -%>
+
+                    </div>
+
+                </div>
+
+                <div class="Search-Container">
+                    <div class="input-box">
+                        <input type="search" id="SearchByDocType" class="SearchInput" onkeyup="Search()" required>
+                        <label>البحث بنوع المستند </label>
+                        <div class="tooltip arrow arr-bottom-left">حدد طريقة البحث</div>
+                        <div class="Filter-box">
+                            <div class="tooltip arrow arr-bottom-left">حدد طريقة البحث</div>
+                            <i class='bx bxs-filter-alt Filter-icon' onclick="ShowFilter()"></i>
+                            <div class="filter-item arrow arr-top-left">
+                                <h5 id="SearchByDocType" class="active">البحث بنوع المستند</h5>
+                                <h5 id="SearchByDocNu">البحث رقم المستند</h5>
+                                <h5 id="SearchByStatment">البحث بالبيان</h5>
+                                <h5 id="SearchByUser">البحث بالمنشئ</h5>
+                            </div>
+                        </div>
+                        <span class='bx bx-search'></span>
+                    </div>
+                    <%- include('Partials/SearchDate.ejs'); -%>
+
+                </div>
+
+                <div class="Table-Container">
+                    <table class="Table">
+                        <thead>
+                            <tr>
+                                <th>م</th>
+                                <th>
+                                    <div class="FlexTH">
+                                        <Span>التاريخ</Span>
+                                        <i id="DocDate" class='bx bx-filter-alt Filter-icon'
+                                            onclick="SortMyData(event)"></i>
+                                    </div>
+                                </th>
+                                <th>رقم المستند</th>
+                                <th>نوع المستند</th>
+                                <th>بيان</th>
+                                <th>الوارد</th>
+                                <th>الصادر</th>
+                                <th>الرصيد</th>
+                                <th>المنشئ</th>
+                            </tr>
+                        </thead>
+                        <tbody class="Table-body"></tbody>
+                    </table>
+                </div>
+        </div>
+
+        <div class="Form-Container Form-ADD Form-Product">
+            <div class="overlow"></div>
+            <form class="Form">
+                <div class="Form-scroll">
+                    <i onclick="Hide_Container()" class="bx bx-x X-Toast"></i>
+                    <div class="Form-header">
+                        <div class="Wrapper-Tilte">
+                            <h3>تعديل منتج </h3>
+                            <div class="line">
+                                <div></div>
+                                <div></div>
+                                <div></div>
+                            </div>
+                        </div>
+                        <i class="Form-logo">
+                            <img src="Img/Logo.png" alt="" srcset="">
+                            <h1 class="logo-text">MODERN</h1>
+                        </i>
+                    </div>
+
+                    <div class="Form-body">
+                        <div class="Row grid-2B">
+                            <div class="input-box">
+                                <input type="text" class="Name" required>
+                                <label>اسم المنتج *</label>
+                                <span class="bx bx-cart"></span>
+                            </div>
+                            <div class="input-box">
+                                <input type="text" class="Barcode" required>
+                                <label>باركود</label>
+                                <span class='bx bx-barcode'></span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="Row grid-2">
+                                <div class="input-box">
+                                    <input type="text" class="MainUnit" onchange="ChangeLabelTxt(event)" required>
+                                    <label>الوحدة الاساسية</label>
+                                    <span class='bx bxl-unity'></span>
+                                </div>
+                                <div class="input-box">
+                                    <input type="number" min="1" class="MinQty" required>
+                                    <label class="LabelMinQty">حد اعادة الطلب </label>
+                                    <span class='bx bx-revision'></span>
+                                </div>
+                            </div>
+                            <div class="Row grid-3">
+                                <div class="input-box">
+                                    <input type="number" min="1" class="PriceMainUnitSales" required>
+                                    <label class="LabelPrice">سعر بيع الوحدة</label>
+                                    <span class='bx bx-dollar'></span>
+                                </div>
+                                <div class="input-box">
+                                    <input type="number" min="1" class="PriceMainUnitBuy" required>
+                                    <label class="LabelPrice">سعر شراء الوحدة</label>
+                                    <span class='bx bx-dollar'></span>
+                                </div>
+                                <div class="input-box">
+                                    <input type="number" min="1" class="Balance" required>
+                                    <label class="LabelBalance">الرصيد الافتتاحي</label>
+                                    <span class='bx bxl-unity'></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="UnitsParent">
+                            <div class="Row grid-7">
+                                <h4>الوحدة</h4>
+                                <div class="input-box">
+                                    <input type="text" class="SubUnit" onchange="ChangeLabelTxt(event)" required>
+                                </div>
+                                <h4 class="LabelInclude"> تحتوي علي كم </h4>
+                                <div class="input-box">
+                                    <input type="number" min="1" class="IncludeSubUnit" required>
+                                </div>
+                                <h4 class="LabelPrice">سعر بيع الوحده</h4>
+                                <div class="input-box">
+                                    <input type="number" min="1" class="PriceSubUnitSales" required>
+                                </div>
+                                <h4 class="LabelPrice">سعر شراء الوحده</h4>
+                                <div class="input-box">
+                                    <input type="number" min="1" class="PriceSubUnitBuy" required>
+                                </div>
+                                <div class="btn-box">
+                                    <div class="tooltip arr-left-center">اضافة منتج</div>
+                                    <button type="button" class="btn btn-plus bx bx-plus" id="1"
+                                        onclick="AddOrRemoveItem(event)">
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="Form-footer">
+                        <button type="button" id="<%= FileID %>" onclick="EditProduct(id)" class="btn btn-Save">حفظ
+                            البيانات</button>
+                        <button type="button" onclick="Hide_Container()" class="btn btn-Cancel">الغاء</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <%- include('Partials/Footer.ejs'); -%>
+
+            <script src="Js/9-ProductFile.js"></script>
+
+            </body>
+
+            </html>

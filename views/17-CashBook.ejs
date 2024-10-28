@@ -1,0 +1,99 @@
+<%- include('Partials/Header.ejs'); -%>
+
+    <%- include('Partials/Menu.ejs'); -%>
+
+        <div class="Layout-Container">
+            <%- include('Partials/DetailsCompany.ejs'); -%>
+            <div class="Wrapper-Tilte">
+                <h1 class="Title-Container"><%= Title %></h1>
+                <div class="line">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+                <div class="Buttons-Container">
+                    <div class="right">
+                        <div class="Row grid-4">
+                            <div class="card-item Primary">
+                                <i class='item-icon bx bx-dollar'></i>
+                                <div class="center">
+                                    <h3 class="SumDebit">0.00</h3>
+                                    <p>اجمالي المقبوضات</p>
+                                </div>
+                            </div>
+                            <div class="card-item Teal">
+                                <i class='item-icon bx bx-dollar'></i>
+                                <div class="center">
+                                    <h3 class="SumCredit">0.00</h3>
+                                    <p>اجمالي المدفوعات</p>
+                                </div>
+                            </div>
+                            <div class="card-item Green">
+                                <i class='item-icon bx bx-dollar'></i>
+                                <div class="center">
+                                    <h3 class="FinalBalance">0.00</h3>
+                                    <p>رصيد النقدية</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left">
+                        <%- include('Partials/Buttons.ejs'); -%>
+                    </div>
+                </div>
+
+                <div class="Search-Container">
+                    <div class="input-box">
+                        <input type="search" id="SearchByName" class="SearchInput" onkeyup="Search()" required>
+                        <label>البحث بالاسم</label>
+                        <div class="tooltip arrow arr-bottom-left">حدد طريقة البحث</div>
+                        <div class="Filter-box">
+                            <div class="tooltip arrow arr-bottom-left">حدد طريقة البحث</div>
+                            <i class='bx bxs-filter-alt Filter-icon' onclick="ShowFilter()"></i>
+                            <div class="filter-item arrow arr-top-left">
+                                <h5 id="SearchByName" class="active">البحث بالاسم </h5>
+                                <h5 id="SearchByDocType">البحث بنوع العملية</h5>
+                                <h5 id="SearchByStatment">البحث بالبيان</h5>
+                                <h5 id="SearchByUser">البحث بالمنشئ</h5>
+                            </div>
+                        </div>
+                        <span class='bx bx-search'></span>
+                    </div>
+                    <%- include('Partials/SearchDate.ejs'); -%>
+
+                </div>
+
+                <div class="Table-Container">
+                    <table class="Table">
+                        <thead>
+                            <tr>
+                                <th>م</th>
+                                <th>
+                                    <div class="FlexTH">
+                                        <Span>التاريخ</Span>
+                                        <i id="DocDate" class='bx bx-filter-alt Filter-icon'
+                                            onclick="SortMyData(event)"></i>
+                                    </div>
+                                </th>
+                                <th>رقم العملية</th>
+                                <th>نوع العملية</th>
+                                <th>بيان</th>
+                                <th>مقبوضات</th>
+                                <th>مدفوعات</th>
+                                <th>رصيد</th>
+                                <th>المنشئ</th>
+                            </tr>
+                        </thead>
+                        <tbody class="Table-body"></tbody>
+                    </table>
+                </div>
+        </div>
+
+        <%- include('Partials/Footer.ejs'); -%>
+
+            <script src="Js/19-CashBook.js"></script>
+
+            </body>
+
+            </html>

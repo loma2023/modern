@@ -1,0 +1,274 @@
+<%- include('Partials/Header.ejs'); -%>
+
+    <%- include('Partials/Menu.ejs'); -%>
+        <% let SubTitle="عميل" , DocType="سند قبض" %>
+            <% if (Title.includes("الموردين")){ %>
+                <% SubTitle="مورد" ,DocType="سند دفع" %>
+                    <% } %>
+                        <div class="Layout-Container">
+
+                            <%- include('Partials/DetailsCompany.ejs'); -%>
+
+                                <div class="Wrapper-Tilte">
+                                    <h1 class="Title-Container"><%= Title %></h1>
+                                    <div class="line">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                                <div class="Buttons-Container">
+                                    <div class="right">
+                                        <div class="Row grid-4">
+                                            <div class="card-item Green">
+                                                <i class='item-icon bx bx-user'></i>
+                                                <div class="center">
+                                                    <h3 class="TableLength">0.00</h3>
+                                                    <p>عدد <%= Title %>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="card-item Primary">
+                                                <i class='item-icon bx bx-dollar'></i>
+                                                <div class="center">
+                                                    <h3 class="FinalBalance">0.00</h3>
+                                                    <p>اجمالي المديونية</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="left">
+                                        <%- include('Partials/Buttons.ejs'); -%>
+                                    </div>
+                                </div>
+
+                                <div class="Search-Container">
+                                    <div class="input-box">
+                                        <input type="search" id="SearchByName" class="SearchInput" onkeyup="Search()"
+                                            required>
+                                        <label>البحث بالاسم </label>
+                                        <div class="tooltip arrow arr-bottom-left">حدد طريقة البحث</div>
+                                        <div class="Filter-box">
+                                            <div class="tooltip arrow arr-bottom-left">حدد طريقة البحث</div>
+                                            <i class='bx bxs-filter-alt Filter-icon' onclick="ShowFilter()"></i>
+                                            <div class="filter-item arrow arr-top-left">
+                                                <h5 id="SearchByName" class="active">البحث بالاسم</h5>
+                                                <h5 id="SearchByCity">البحث بالمدينة</h5>
+                                                <h5 id="SearchByAddress">البحث بالعنوان</h5>
+                                                <h5 id="SearchByPhone">البحث بالهاتف</h5>
+                                                <h5 id="SearchByUser">البحث بالمنشئ</h5>
+                                            </div>
+                                        </div>
+                                        <span class='bx bx-search'></span>
+                                    </div>
+                                    <%- include('Partials/SearchDate.ejs'); -%>
+                                </div>
+
+                                <div class="Table-Container">
+                                    <table class="Table HideTh">
+                                        <thead>
+                                            <tr>
+                                                <th>م</th>
+                                                <th>
+                                                    <div class="FlexTH">
+                                                        <Span> الاسم</Span>
+                                                        <i id="Name" class='bx bx-filter-alt Filter-icon'
+                                                            onclick="SortMyData(event)"></i>
+                                                    </div>
+                                                </th>
+                                                <th>
+                                                    <div class="FlexTH">
+                                                        <Span> المدينه</Span>
+                                                        <i id="City" class='bx bx-filter-alt Filter-icon'
+                                                            onclick="SortMyData(event)"></i>
+                                                    </div>
+                                                </th>
+                                                <th>العنوان</th>
+                                                <th>الهاتف</th>
+                                                <th>الرصيد الحالي</th>
+                                                <th>
+                                                    <div class="FlexTH">
+                                                        <Span> اخر تعديل</Span>
+                                                        <i id="UpdatedAt" class='bx bx-filter-alt Filter-icon'
+                                                            onclick="SortMyData(event)"></i>
+                                                    </div>
+                                                </th>
+                                                <th>المنشئ</th>
+                                                <th>الاجراء</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="Table-body"></tbody>
+                                    </table>
+                                </div>
+
+                        </div>
+
+                        <div class="Form-Container Form-ADD">
+                            <div class="overlow"></div>
+                            <form class="Form">
+                                <div class="Form-scroll">
+                                    <i onclick="Hide_Container()" class="bx bx-x X-Toast"></i>
+                                    <div class="Form-header">
+                                        <div class="Wrapper-Tilte">
+                                            <h3>اضافة <%= SubTitle %> جديد</h3>
+                                            <div class="line">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <i class="Form-logo">
+                                            <img src="Img/Logo.png" alt="" srcset="">
+                                            <h1 class="logo-text">MODERN</h1>
+                                        </i>
+                                    </div>
+
+                                    <div class="Form-body">
+                                        <div class="input-box">
+                                            <input type="text" class="Name" required>
+                                            <label>الاسم *</label>
+                                            <span class="bx bx-user"></span>
+                                        </div>
+                                        <div class="Row grid-2">
+                                            <div class="input-box">
+                                                <input type="text" class="City" required>
+                                                <label>المدينه</label>
+                                                <span class='bx bx-location-plus'></span>
+                                            </div>
+                                            <div class="input-box">
+                                                <input type="text" class="Address" required>
+                                                <label>العنوان تفصيلي</label>
+                                                <span class='bx bx-location-plus'></span>
+                                            </div>
+                                        </div>
+                                        <div class="Row grid-3A">
+                                            <div class="input-box">
+                                                <input type="tel" class="Phone" required>
+                                                <label>الهاتف </label>
+                                                <span class='bx bx-phone'></span>
+                                            </div>
+                                            <div class="input-box">
+                                                <input type="number" class="Balance" min="0" required>
+                                                <label>الرصيد</label>
+                                                <div class="tooltip arrow arr-top-right">الرصيد الافتتاحي وهو
+                                                    رصيد ال <%= SubTitle %> قبل
+                                                        السيستم
+                                                </div>
+                                                <span class='bx bx-dollar'></span>
+                                            </div>
+                                            <div class="input-box">
+                                                <select class="BalanceType">
+                                                    <option value="empty" selected hidden>غير محدد</option>
+                                                    <option value="Debit">مدين (عليه)</option>
+                                                    <option value="Credit">دائن (له)</option>
+                                                    <option value="tooltip" disabled>لو ال <%= SubTitle %> عليه مديونية
+                                                            اختار مدين
+                                                            (عليه)
+                                                    </option>
+                                                </select>
+                                                <label>نوع الرصيد</label>
+                                                <span class='bx bx-dollar'></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="Form-footer">
+                                        <button type="button" onclick="NewCustomerOrSupplier()" class="btn btn-Save">حفظ
+                                            البيانات</button>
+                                        <button type="button" onclick="Hide_Container()"
+                                            class="btn btn-Cancel">الغاء</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="Form-Container Form-Collect">
+                            <div class="overlow"></div>
+                            <form class="Form">
+                                <div class="Form-scroll">
+                                    <i onclick="Hide_Container()" class="bx bx-x X-Toast"></i>
+                                    <div class="Form-header">
+                                        <div class="Wrapper-Tilte">
+                                            <h3 class="Title-Form-Collect"> <%= DocType %> جديد </h3>
+                                            <div class="line">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
+                                        </div>
+                                        <i class="Form-logo">
+                                            <img src="Img/Logo.png" alt="" srcset="">
+                                            <h1 class="logo-text">MODERN</h1>
+                                        </i>
+                                    </div>
+
+
+                                    <div class="Person-Details">
+                                        <div class="right">
+                                            <div class="item">
+                                                <h4>الاسم</h4>
+                                                <p class="Name"></p>
+                                            </div>
+                                            <div class="item">
+                                                <h4>العنوان</h4>
+                                                <p class="Address"></p>
+                                            </div>
+                                            <div class="item">
+                                                <h4>الهاتف</h4>
+                                                <p class="Phone"></p>
+                                            </div>
+                                        </div>
+                                        <div class="left">
+                                            <div class="item">
+                                                <h4>اجمالي المدين (عليه)</h4>
+                                                <p class="Debit"></p>
+                                            </div>
+                                            <div class="item">
+                                                <h4>اجمالي الدائن (له)</h4>
+                                                <p class="Credit"></p>
+                                            </div>
+                                            <div class="item">
+                                                <h4>المديونية الحالية</h4>
+                                                <p class="Balance"></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="Form-body">
+                                        <div class="Row grid-2">
+                                            <div class="input-box">
+                                                <input type="text" class="DocDate" onfocus="(this.type='date')"
+                                                    onblur="(this.type='text')" required>
+                                                <label>التاريخ *</label>
+                                                <span class="bx bx-calendar"></span>
+                                            </div>
+                                            <div class="input-box">
+                                                <input type="number" class="Total" min="1" required>
+                                                <label>المبلغ *</label>
+                                                <span class='bx bx-dollar'></span>
+                                            </div>
+                                        </div>
+                                        <div class="input-box">
+                                            <input type="text" class="Statment" required>
+                                            <label>بيان وملاحظات</label>
+                                            <span class='bx bxs-message-dots'></span>
+                                        </div>
+                                    </div>
+                                    <div class="Form-footer">
+                                        <button type="button" id="" onclick="SelectFunction(event)"
+                                            class="btn btn-Save">حفظ
+                                            البيانات</button>
+                                        <button type="button" onclick="Hide_Container()"
+                                            class="btn btn-Cancel">الغاء</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <%- include('Partials/Footer.ejs'); -%>
+
+                            <script src="Js/4-Customers.js"></script>
+
+                            </body>
+
+                            </html>

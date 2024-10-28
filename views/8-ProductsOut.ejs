@@ -1,0 +1,75 @@
+<%- include('Partials/Header.ejs'); -%>
+
+    <%- include('Partials/Menu.ejs'); -%>
+
+        <div class="Layout-Container">
+
+            <%- include('Partials/DetailsCompany.ejs'); -%>
+
+                <div class="Wrapper-Tilte">
+                    <h1 class="Title-Container"><%= Title %></h1>
+                    <div class="line">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+                <div class="Buttons-Container">
+                    <div class="right">
+                        <div class="Row grid-4">
+                            <div class="card-item Green">
+                                <i class='item-icon bx bx-cart'></i>
+                                <div class="center">
+                                    <h3 class="TableLength">0.00</h3>
+                                    <p>عدد الاصناف الناقصه</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="left">
+                        <%- include('Partials/Buttons.ejs'); -%>
+                    </div>
+                </div>
+
+                <div class="Search-Container">
+                    <div class="input-box">
+                        <input type="search" id="SearchByName" class="SearchInput" onkeyup="Search()" required>
+                        <label>البحث بالاسم </label>
+                        <span class='bx bx-search'></span>
+                    </div>
+                    <%- include('Partials/SearchDate.ejs'); -%>
+
+                </div>
+
+                <div class="Table-Container">
+                    <table class="Table">
+                        <thead>
+                            <tr>
+                                <th>م</th>
+                                <th>باركود</th>
+                                <th>
+                                    <div class="FlexTH">
+                                        <Span> المنتج</Span>
+                                        <i id="Name" class='bx bx-filter-alt Filter-icon'
+                                            onclick="SortMyData(event)"></i>
+                                    </div>
+                                </th>
+                                <th>الحد الادني</th>
+                                <th>الكمية الحالية</th>
+                                <th>اخر فاتورة شراء</th>
+                                <th>اخر فاتورة بيع</th>
+                            </tr>
+                        </thead>
+                        <tbody class="Table-body"></tbody>
+                    </table>
+                </div>
+        </div>
+
+
+        <%- include('Partials/Footer.ejs'); -%>
+
+            <script src="Js/11-ProductsOut.js"></script>
+
+            </body>
+
+            </html>

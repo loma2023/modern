@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Fontawesome icon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
+    <link rel="stylesheet" href="./Css/Main.css">
+    <link rel="stylesheet" href="./Css/Activation.css">
+    <link rel="stylesheet" href="./Css/Toast.css">
+
+    <title>تفعيل الحساب</title>
+</head>
+
+<body>
+    <div class="contact-bg">
+        <div class="line">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h2>تفعيل الحساب</h2>
+        <div class="line">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <h3>Get in Touch with Us</h3>
+        <h3 class="text">انت بحاجه الي تفعيل حسابك اتصل بنا لتفعيل حسابك</h3>
+    </div>
+
+    <!-- ******************* -->
+
+    <div class="ContainerCard">
+
+        <div class="Cart">
+            <div>
+                <h1>اشتراك شهري</h1>
+                <h1>300 <span>EGP</span></h1>
+            </div>
+            <i class="fas fa-money-bill-wave"></i>
+        </div>
+
+        <div class="Cart">
+            <div>
+                <h1>اشتراك سنوي</h1>
+                <h1>2,999 <span>EGP</span></h1>
+            </div>
+            <i class="fas fa-money-bill-wave"></i>
+        </div>
+
+        <div class="Cart">
+            <div>
+                <h1>اشتراك مدي الحياة</h1>
+                <h1>5,999 <span>EGP</span></h1>
+            </div>
+            <i class="fas fa-money-bill-wave"></i>
+        </div>
+
+    </div>
+
+    <!-- ****************** -->
+
+    <div class="Container-Contact">
+        <div class="content">
+            <div class="left-side">
+                <div class="address details">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div class="topic">Address</div>
+                    <div class="text-one">مصر</div>
+                    <div class="text-two">سوهاج - جرجا </div>
+                </div>
+                <div class="phone details">
+                    <i class="fas fa-phone-alt"></i>
+                    <div class="topic">Phone</div>
+                    <div class="text-one">+0115 834 7657</div>
+                    <!-- <div class="text-two">+0115 834 7657</div> -->
+                </div>
+                <div class="email details">
+                    <i class="fas fa-envelope"></i>
+                    <div class="topic">Email</div>
+                    <div class="text-one">loma2598@gmail.com</div>
+                    <!-- <div class="text-two">info.codinglab@gmail.com</div> -->
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="topic-text">Send us a message</div>
+                <p> </p>
+                <p> </p>
+                <form class="Form-ADD">
+                    <div class="input-box">
+                        <input type="text" placeholder="Enter your name" class="Name" />
+                    </div>
+                    <div class="input-box">
+                        <input type="text" placeholder="Enter your email" class="Email" />
+                    </div>
+                    <div class="input-box message-box">
+                        <textarea placeholder="Enter your message" class="Message"></textarea>
+                    </div>
+                    <div class="button">
+                        <input type="button" onclick="SendMessgae()" value="Send Now" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="Toasts"></div>
+    <script>
+        function SendMessgae() {
+            let Form = document.querySelector(".Form-ADD");
+            let Name = Form.querySelector(".Name").value;
+            let Email = Form.querySelector(".Email").value;
+            let Message = Form.querySelector(".Message").value;
+
+            if (Name === "" || Email === "" || Message === "") {
+               return Toast(id = "Error", txt = "يرجي اكمال البيانات",);
+            }
+
+            fetch("/SendMessage", {
+                method: "POST",
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    Name: Name, Email: Email,Message: Message,
+                })
+            })
+                .then((res) => res.json())
+                .then((Data) => { Toast(id = Data.id, txt = Data.txt,); })
+                .catch((err) => { console.log(err) })
+        }
+
+        function Toast(id, txt) {
+            let icon = "bell"
+            if (id === "Success") { icon = "check" }
+            if (id === "Error") { icon = "x" }
+            let Toasts = document.querySelector(".Toasts")
+            let length = Toasts.querySelectorAll(".Toast").length
+            let MyToast = `
+                <div class="Toast index-${length}"  id="${id}">
+                    <i class="bx bx-${icon}"></i>
+                    <div>
+                        <h4>${id}</h4>
+                        <h4 class="Toast-Txt">${txt} </h4>
+                    </div>
+                    <i onclick="CloseToast(index = ${length})" class="bx bx-x X-Toast"></i>
+                </div> `
+            Toasts.innerHTML += MyToast
+            setTimeout(() => { Toasts.querySelectorAll(".Toast")[length].classList.add("active") }, 100);
+            setTimeout(() => { CloseToast(index = length) }, 5000);
+        }
+
+    </script>
+
+
+</body>
+
+</html>

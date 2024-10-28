@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="" />
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="icon" href="img/Logo.png" />
+  <link rel="stylesheet" href="Css/Register.css" />
+  <link rel="stylesheet" href="Css/Form.css" />
+  <link rel="stylesheet" href="Css/Toast.css">
+  <title>
+    <%= Title %>
+  </title>
+</head>
+
+<body>
+  <div class="MainContainer">
+    <div class="LayoutSteps">
+
+      <div class="ItemStep active">
+        <i class="circle bx">1</i>
+        <div class="Stepinner">
+          <p>خطوة 1</p>
+          <h4> بياناتك الشخصية</h4>
+        </div>
+      </div>
+
+      <div class="ItemStep">
+        <i class="circle bx">2</i>
+        <div class="Stepinner">
+          <p>خطوة 2</p>
+          <h4> بيانات نشاطك</h4>
+        </div>
+      </div>
+
+      <div class="ItemStep">
+        <i class="circle LastCircle bx">3</i>
+        <div class="Stepinner">
+          <p>خطوة 3</p>
+          <h4> تأكيد الاميل</h4>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="SubContainer">
+      <!--PERSO INFOS -------------------------------------------------------------------->
+
+      <div class="ContainerStep active">
+        <div class="Form-header">
+          <h1>بياناتك الشخصية</h1>
+          <i href="#" class="Form-logo">
+            <img src="./Img/Logo.png" alt="" srcset="">
+            <div class="logo-text">MODERN</div>
+          </i>
+        </div>
+        <p>يرجي ادخال بياناتك الشخصية للانتقال للخطوة التالية</p>
+
+        <div class="Form-body">
+          <div class="input-box">
+            <input type="text" class="Name" required>
+            <label>الاسم *</label>
+            <span class="bx bx-user"></span>
+          </div>
+
+          <div class="Row grid-2">
+            <div class="input-box">
+              <input type="text" class="Address" required>
+              <label>العنوان</label>
+              <span class='bx bx-location-plus'></span>
+            </div>
+            <div class="input-box">
+              <input type="tel" class="Phone" required>
+              <label>رقم الهاتف</label>
+              <i class='bx bx-phone'></i>
+              <span class='bx bx-phone'></span>
+            </div>
+          </div>
+
+          <div class="input-box">
+            <input type="email" class="Email" required>
+            <label>الاميل *</label>
+            <span class="bx bx-envelope"></span>
+          </div>
+
+          <div class="Row grid-2">
+            <div class="input-box">
+              <input type="password" class="Password" required>
+              <label>كلمة المرور</label>
+              <span class='bx bx-lock'></span>
+            </div>
+            <div class="input-box">
+              <input type="password" class="ConfirmPassword" required>
+              <label>تأكيد كلمة المرور</label>
+              <span class='bx bx-lock'></span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="FooterStep">
+          <button onclick="location.href = 'Login'" class="GoBack">Login</button>
+          <button onclick="YourINFO(ID=0)" class="BtnNext">Next Step</button>
+        </div>
+      </div>
+
+      <div class="ContainerStep">
+        <div class="Form-header">
+          <h1>بيانات نشاطك</h1>
+          <i href="#" class="Form-logo">
+            <img src="./Img/Logo.png" alt="" srcset="">
+            <div class="logo-text">MODERN</div>
+          </i>
+        </div>
+        <p>يرجي ادخال بيانات نشاطك من حيث اسم النشاط ونوعه وعنوانه ورقم الهاتف</p>
+
+        <div class="Form-body">
+          <div class="input-box">
+            <input type="text" class="NameCompany" required>
+            <label>اسم النشاط *</label>
+            <span class="bx bxs-store-alt"></span>
+          </div>
+
+          <div class="Row grid-2">
+            <div class="input-box">
+              <input type="text" class="TypeCompany" required>
+              <label>نوع النشاط</label>
+              <span class='bx bxs-store-alt'></span>
+            </div>
+            <div class="input-box input-box-file">
+              <input type="url" class="LogoCompany" placeholder="ضع الرابط الخاص بالصورة ." required>
+              <label>اللوجو</label>
+              <span class='bx bx-image'></span>
+            </div>
+          </div>
+
+          <div class="Row grid-2">
+            <div class="input-box">
+              <input type="text" class="CityCompany" required>
+              <label>المدينه</label>
+              <span class='bx bx-location-plus'></span>
+            </div>
+            <div class="input-box">
+              <input type="text" class="AddressCompany" required>
+              <label>العنوان تفصيلي</label>
+              <span class='bx bx-location-plus'></span>
+            </div>
+          </div>
+          <div class="Row grid-2">
+            <div class="input-box">
+              <input type="tel" class="PhoneCompany1" required>
+              <label>رقم الهاتف</label>
+              <i class='bx bx-phone'></i>
+              <span class='bx bx-phone'></span>
+            </div>
+            <div class="input-box">
+              <input type="tel" class="PhoneCompany2" required>
+              <label>رقم الهاتف اخر</label>
+              <i class='bx bx-phone'></i>
+              <span class='bx bx-phone'></span>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="FooterStep">
+          <button onclick="GoStepBack(ID = 1)" class="GoBack">Go Back</button>
+          <button onclick="YourCompany(ID = 1)" class="BtnNext">Next Step</button>
+        </div>
+      </div>
+
+      <div class="ContainerStep">
+        <div class="Form-header">
+          <h1>تأكيد الاميل</h1>
+          <i href="#" class="Form-logo">
+            <img src="./Img/Logo.png" alt="" srcset="">
+            <div class="logo-text">MODERN</div>
+          </i>
+        </div>
+        <p>تم ارسال كود تأكيد البريد الالكتروني مكون من 6 ارقام يرجي ادخال هذا الكود </p>
+
+        <div class="Form-body">
+          <div class="DivCodeTxt">
+            <input class="CodeTxt" type="text" required>
+            <input class="CodeTxt" type="text" disabled>
+            <input class="CodeTxt" type="text" disabled>
+            <input class="CodeTxt" type="text" disabled>
+            <input class="CodeTxt" type="text" disabled>
+            <input class="CodeTxt" type="text" disabled>
+          </div>
+        </div>
+
+        <div class="FooterStep">
+          <button onclick="GoStepBack(ID = 2)" class="GoBack">Go Back</button>
+          <button onclick="Verify(link = '/ConfirmEmail')" class="BtnNext btn-OTP">Verify</button>
+        </div>
+      </div>
+
+      <!--THANK YOU------------------------------------------------------------------------------>
+      <div class="ContainerStep ThankYou">
+        <img src="./Img/IconThanks.png" width="150" alt="" />
+        <h1>شكراً لك!</h1>
+        <p>تم الاشتراك بنجاح</p>
+
+        <!-- <p>اهلا بك وشكراً لاشتراكك ! من الرائع أن تكون معنا علي متن الطائرة . نحن ملتزمون بتقديم أفضل وأحدث التحديثات مباشرة , إذا كانت لديك أية مخاوف او كنت بحاجة إلي المساعدة فنحن علي بعد رسالة فقط , شكراً لكم مرة أخري علي ثقتكم بنا.</p> -->
+
+        <div class="FooterStep">
+          <button onclick="location.href = 'Home'" class="BtnNext">بدء</button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <div class="Toasts"></div>
+  <script src="Js/0-Auth.js"></script>
+
+</body>
+
+</html>

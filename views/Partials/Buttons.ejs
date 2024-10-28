@@ -1,0 +1,29 @@
+<% if (!Title.includes("الاسعار")) { %>
+<div class="btn-box">
+    <div class="tooltip arrow arr-bottom-left">البحث في الجدول</div>
+    <button type="button" onclick="Show_Search_container(event)" class="btn btn-search">
+        <img src="Img/IconSearch.png" width="25" height="25">
+    </button>
+</div>
+<% } %>
+<% if (Buttons === "TRUE") { %>
+    <div class="btn-box">
+        <div class="tooltip arrow arr-bottom-left">اضافة بيانات</div>
+        <button type="button" onclick="FormADD()" class="btn btn-plus">
+            <img src="Img/IconAdd.png" width="25" height="25">
+        </button>
+    </div> 
+<% } %>
+
+<div class="btn-box">
+    <div class="tooltip arrow arr-bottom-left">التحويل لملف اكسيل</div>
+    <button type="button" id="btnExport" onclick="ExcelFile(this)" class="btn btn-excel ">
+        <img src="Img/IconExcel.png" width="25" height="25">
+    </button>
+</div>
+<div class="btn-box">
+    <div class="tooltip arrow arr-bottom-left">طباعة الجدول</div>
+    <button type="button" onclick="print()" class="btn btn-print">
+        <img src="Img/IconPrint.png" width="25" height="25">
+    </button>
+</div>

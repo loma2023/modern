@@ -1,0 +1,32 @@
+<div class="btns">
+    <div class="btn-box">
+        <div class="tooltip arrow arr-bottom-lef">البحث في الجدول</div>
+        <button type="button" onclick="Show_Search_container(event)" class="btn btn-search">
+            <img src="Img/IconSearch.png" width="25" height="25">
+        </button>
+    </div>
+    <div class="btn-box">
+        <div class="tooltip arr-bottom-lef">تعديل البيانات </div>
+        <button type="button" id="<%= FileID %>" onclick="EditData(id)" class="btn btn-Edit">
+            <img src="Img/IconEdit.png" width="25" height="25">
+        </button>
+    </div>
+    <div class="btn-box">
+        <div class="tooltip arr-bottom-lef">حذف البيانات </div>
+        <button type="button" id="<%= FileID %>" onclick="Show_Alert(id)" class="btn btn-Delete">
+            <img src="Img/IconDelete.png" width="25" height="25">
+        </button>
+    </div>
+    <div class="btn-box">
+        <div class="tooltip arrow arr-bottom-left">التحويل لملف اكسيل</div>
+        <button type="button" id="btnExport" onclick="ExcelFile(this)" class="btn btn-excel">
+            <img src="Img/IconExcel.png" width="25" height="25">
+        </button>
+    </div>
+    <div class="btn-box">
+        <div class="tooltip arrow arr-bottom-lef">طباعة </div>
+        <button type="button" onclick="print()" class="btn btn-print">
+            <img src="Img/IconPrint.png" width="25" height="25">
+        </button>
+    </div>
+</div>

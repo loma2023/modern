@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="Img/Logo.png" />
+    <link rel="stylesheet" href="Css/Main.css">
+    <link rel="stylesheet" href="Css/Home.css">
+    <link rel="stylesheet" href="Css/Toast.css">
+    <title>الصفحة الرئيسية</title>
+</head>
+
+<body>
+<% let ThisDay=new Date().toJSON().slice(0, 10) %>
+<% let ThisMonth=new Date().toJSON().slice(0, 7) %>
+<% let ThisYear = new Date().toJSON().slice(0, 4) %>
+<% let TxtZero = "-0" %>
+<% if (new Date().getMonth() > 9) {TxtZero = "-"} %>
+<% let AfterMonth = ThisYear + TxtZero + new Date().getMonth() %>
+
+<% let Receipts = MainData.GeneralData %>
+<% let ToDaySalse=0,ToDayPurchases=0,ToDayExpenses=0,ToDayRevenues=0 %>
+<% let SumCollect=0,SumPayment=0,BalanceCash=0, MonthExpenses=0,MonthRevenues=0 %>
+<% let BetweenSales=0,PercentSalse=100,TxtSalse="",BalanceCustomers=0 ,BalanceSuppliers=0 %>
+<% let MonthSalse=0,AfterMonthSalse=0,SalesCash=0,SalesForward=0,NuSalesCash=0,NuSalesForward=0 %>
+<% let MonthPurchases=0,AfterMonthPurchases=0,PurchasesCash=0 ,PurchasesForward=0,NuPurchasesCash=0 ,NuPurchasesForward=0 %>
+
+<% Receipts.forEach(Receipt=> {
+    <!-- لحساب المعاملات اليومية -->
+    if(Receipt.DocDate.slice(0, 10) === ThisDay){
+        if (Receipt.Statment === "مبيعات نقدية" || Receipt.Statment =="مبيعات آجلة" ){ToDaySalse += Receipt.Total}
+        if (Receipt.Statment === "مرتجع مبيعات") {ToDaySalse -=Receipt.Total}
+        if (Receipt.Statment === "مشتريات نقدية" || Receipt.Statment=="مشتريات آجلة") {ToDayPurchases += Receipt.Total}
+        if (Receipt.Statment === "مرتجع مشتريات") {ToDayPurchases-= Receipt.Total}
+        if (Receipt.Debit === "المصاريف") {ToDayExpenses += Receipt.Total}
+        if (Receipt.Credit === "الايرادات") {ToDayRevenues +=Receipt.Total}
+    }
+    <!-- لحساب معاملات الشهر الحالي -->
+    if(Receipt.DocDate.slice(0, 7) === ThisMonth){
+        <!-- لحساب مبيعات الشهر الحالي -->
+        if (Receipt.Statment === "مبيعات نقدية"){SalesCash+=Receipt.Total;NuSalesCash++}
+        if (Receipt.Statment === "مبيعات آجلة" ){SalesForward+=Receipt.Total;BalanceCustomers+=Receipt.Total;NuSalesForward++}
+        if (Receipt.Statment === "مرتجع مبيعات نقدي") {SalesCash -=Receipt.Total}
+        if (Receipt.Statment === "مرتجع مبيعات آجل") {SalesForward -=Receipt.Total;BalanceCustomers-=Receipt.Total}
+        <!-- لحساب مشتريات الشهر الحالي -->
+        if (Receipt.Statment === "مشتريات نقدية"){PurchasesCash+=Receipt.Total;NuPurchasesCash++}
+        if (Receipt.Statment === "مشتريات آجلة" ){PurchasesForward+=Receipt.Total;BalanceSuppliers+=Receipt.Total;NuPurchasesForward++}
+        if (Receipt.Statment === "مرتجع مشتريات نقدي") {PurchasesCash -=Receipt.Total}
+        if (Receipt.Statment === "مرتجع مشتريات آجل") {PurchasesForward -=Receipt.Total;BalanceSuppliers-=Receipt.Total}
+   
+        if (Receipt.Debit === "المصاريف" ) {MonthExpenses +=Receipt.Total}
+        if (Receipt.Credit === "الايرادات" ) {MonthRevenues +=Receipt.Total}
+    
+    }
+    <!-- لحساب مبيعات الشهر السابق -->
+    if(Receipt.DocDate.slice(0, 7) === AfterMonth){
+        if (Receipt.DocType === "مبيعات" ){AfterMonthSalse += Receipt.Total ;}
+        if (Receipt.DocType.includes("مرتجع مبيعات")) {AfterMonthSalse -=Receipt.Total}
+    }
+    <!-- لحساب المقبوضات والمدفوعات  -->
+    if (Receipt.Debit === "الصندوق" ) {SumCollect +=Receipt.Total}
+    if (Receipt.Credit === "الصندوق" ) {SumPayment +=Receipt.Total}
+}) %>
+
+<% MonthSalse = SalesCash+SalesForward %>
+<% MonthPurchases = PurchasesCash+PurchasesForward %>
+<% BalanceCash = SumCollect - SumPayment %>
+
+<% if (MonthSalse > AfterMonthSalse && AfterMonthSalse !=0 ) { 
+     PercentSalse = (((MonthSalse - AfterMonthSalse)/AfterMonthSalse )*100).toFixed(0)
+     TxtSalse ="اداء مبيعاتك افضل بنسبة " + PercentSalse + "% من مبيعات الشهر الماضي" 
+     BetweenSales = MonthSalse - AfterMonthSalse 
+ }else if(MonthSalse <= AfterMonthSalse && AfterMonthSalse !=0){
+     PercentSalse= ((MonthSalse / AfterMonthSalse)*100).toFixed(0) 
+     TxtSalse ="اداء مبيعاتك يمثل " + PercentSalse + "% من مبيعات الشهر الماضي" 
+     BetweenSales =  AfterMonthSalse - MonthSalse 
+ } %>
+
+ <% if (PercentSalse >= 200) {
+    let Multiples = (PercentSalse / 100).toFixed(0)
+     if (Multiples == 2) {TxtSalse ="اداء مبيعاتك افضل بضعفين من مبيعات الشهر الماضي "}
+     else if (Multiples > 2) {TxtSalse = " أداء مبيعاتك أفضل ب  " + Multiples +" أضعاف من مبيعات الشهر السابق "}
+ } %>
+
+    <div class="Layout-body active <% if (User.DarkMood === true) { %> Dark <% } %>">
+            <%- include('Partials/Menu.ejs'); -%>
+            <div class="Layout-Container">
+                <div style="display: none;">
+                    <%- include('Partials/DetailsCompany.ejs'); -%>
+                </div>
+                <div class="Row grid-2A">
+                    <div class="card Congratulations">
+                        <h1 class="card-title">مَرَحَبًا <%= User.Username %> 👋♥</h1>
+                        <p class="card-txt">فيما يلي قيمة مبيعات الشهر الحالي بالدولار</p>
+                        <span class="PriceOfDollar" id="<%= MonthSalse %>">0$</span>
+                        <h4 class="ToDayDollar">سعر الدولار اليوم</h4>
+                        <div>
+                            <img src="Img/light.png" />
+                            <img src="Img/userImg.png" alt=" " />
+                        </div>
+                    </div>
+
+                    <div class="card Transactions">
+                        <h1 class="card-title">المعاملات</h1>
+                        <p class="card-txt">اجمالي المعاملات لهذا اليوم</p>
+
+                        <div class="Row grid-4">
+                            <div class="card-item Primary">
+                                <i class='item-icon bx bx-cart'></i>
+                                <div class="center">
+                                    <p>المبيعات</p>
+                                    <h3><%= ToDaySalse %></h3>
+                                </div>
+                            </div>
+                            <div class="card-item Teal">
+                                <i class='item-icon bx bxs-cart'></i>
+                                <div class="center">
+                                    <p>المشتريات</p>
+                                    <h3><%= ToDayPurchases %></h3>
+                                </div>
+                            </div>
+                            <div class="card-item Yellow">
+                                <i class='item-icon bx bx-dollar'></i>
+                                <div class="center">
+                                    <p>المصاريف</p>
+                                    <h3><%= ToDayExpenses %></h3>
+                                </div>
+                            </div>
+                            <div class="card-item Blue">
+                                <i class='item-icon bx bx-dollar'></i>
+                                <div class="center">
+                                    <p>الايرادات</p>
+                                    <h3><%= ToDayRevenues %></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Row grid-3">
+                    <div class="card sales-cart">
+                        <div class="cecrel">
+                            <div class="value" id="<%= PercentSalse %>">0%</div>
+                        </div>
+                        <h1 class="card-title">المبيعات</h1>
+                        <h2 class="between-sales"><%= MonthSalse %></h2>
+                        <p class="card-txt"><%= TxtSalse %></p>
+
+                        <div class="card-body">
+                            <div class="card-item Primary">
+                                <i class='item-icon bx bxs-bar-chart-alt-2'></i>
+                                <div class="center">
+                                    <h3>اجمالي المبيعات</h3>
+                                    <p>المبيعات</p>
+                                </div>
+                                <div class="left" style="--width-percent1:100%">
+                                    <h3><%= MonthSalse %></h3>
+                                    <div class="line-graph"></div>
+                                </div>
+                            </div>
+                            <div class="card-item Teal">
+                                <i class='item-icon bx bxs-bar-chart-alt-2'></i>
+                                <div class="center">
+                                    <h3>المبيعات النقدية</h3>
+                                    <p>%<%= ((SalesCash/MonthSalse)*100).toFixed(0) %> من المبيعات</p>
+                                </div>
+                                <div class="left" style="--width-percent2:<%= ((SalesCash/MonthSalse)*100).toFixed(0) %>%">
+                                    <h3><%= SalesCash %></h3>
+                                    <div class="line-graph"></div>
+                                </div>
+                            </div>
+                            <div class="card-item Sky">
+                                <i class='item-icon bx bxs-bar-chart-alt-2'></i>
+                                <div class="center">
+                                    <h3>المبيعات الآجلة</h3>
+                                    <p>%<%= ((SalesForward/MonthSalse)*100).toFixed(0) %> من المبيعات</p>
+                                </div>
+                                <div class="left" style="--width-percent3:<%= ((SalesForward/MonthSalse)*100).toFixed(0) %>%">
+                                    <h3><%= SalesForward %></h3>
+                                    <div class="line-graph"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h1 class="card-title">مستحقات الشهر</h1> 
+                        <p class="card-txt">مواعيد التحصيل من العملاء او تحصيل ايراد خلال الشهر</p> 
+                        <div class="card-body">
+                            <% MainData.TimeCustomersData.forEach(Time => { %>
+                                <% if(Time.DocDate.slice(0, 7) === ThisMonth){ %>
+                                <div class="card-item">
+                                    <i class='item-icon bx bx-dollar'></i>
+                                    <div class="center">
+                                        <h3><%= Time.Name %></h3>
+                                        <p><%= Time.DocDate %></p>
+                                    </div>
+                                    <div class="left">
+                                        <h3><%= Time.Total %></h3>
+                                        <p>عميل</p>
+                                    </div>
+                                </div>
+                                <% }; %>
+                           <% }); %>
+                           <% MainData.RevenuesData.forEach(Revenue => { %>
+                                <% if(Revenue.Type.includes("شهري") && Revenue.AmountType.includes("ثابتة") && Revenue.Status === "TRUE"){ %>
+                                <div class="card-item">
+                                    <i class='item-icon bx bx-dollar'></i>
+                                    <div class="center">
+                                        <h3><%= Revenue.Name %></h3>
+                                        <p><%= Revenue.Type %></p>
+                                    </div>
+                                    <div class="left">
+                                        <h3><%= Revenue.Amount %></h3>
+                                        <p>ايراد</p>
+                                    </div>
+                                </div>
+                                <% }; %>
+                           <% }); %>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h1 class="card-title">التزامات الشهر</h1>
+                        <p class="card-txt">مواعيد الدفع للموردين او دفع مصروف خلال الشهر</p> 
+                        <div class="card-body">
+                            <% MainData.TimeSuppliersData.forEach(Time => { %>
+                                <% if(Time.DocDate.slice(0, 7) === ThisMonth){ %>
+                                <div class="card-item">
+                                    <i class='item-icon bx bx-dollar'></i>
+                                    <div class="center">
+                                        <h3><%= Time.Name %></h3>
+                                        <p><%= Time.DocDate %></p>
+                                    </div>
+                                    <div class="left">
+                                        <h3><%= Time.Total %></h3>
+                                        <p>مورد</p>
+                                    </div>
+                                </div>
+                                <% }; %>
+                           <% }); %>
+                           <% MainData.ExpensesData.forEach(Expense => { %>
+                                <% if(Expense.Type.includes("شهري") && Expense.AmountType.includes("ثابتة") && Expense.Status === "TRUE"){ %>
+                                <div class="card-item">
+                                    <i class='item-icon bx bx-dollar'></i>
+                                    <div class="center">
+                                        <h3><%= Expense.Name %></h3>
+                                        <p><%= Expense.Type %></p>
+                                    </div>
+                                    <div class="left">
+                                        <h3><%= Expense.Amount %></h3>
+                                        <p>مصروف</p>
+                                    </div>
+                                </div>
+                                <% }; %>
+                           <% }); %>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Row grid-3">
+                    <div class="card TopProducts">
+                        <h1 class="card-title">المنتجات الاكثر مبيعاً</h1>
+                        <div class="card-body"></div>
+                    </div>
+
+                    <div class="card ProductsOut">
+                        <h1 class="card-title">نواقص المنتجات</h1>
+                        <div class="card-body"></div>
+                    </div>
+
+                    <div class="card monthly">
+                        <h1 class="card-title">احصائيات الشهر</h1>
+                        <div class="card-body">
+                            <div class="Row grid-2">
+                                <div class="card-item">
+                                    <i class='item-icon bx bx-user'></i>
+                                    <div class="center">
+                                        <h3>
+                                            <% let lengthCustomers=0%>
+                                            <% MainData.CustomersData.forEach(Customer=> {
+                                                if (Customer.CreatedAt.toJSON().slice(0, 7) === ThisMonth && Customer.Status === "TRUE" ) {
+                                                    BalanceCustomers += Customer.Balance
+                                                    lengthCustomers++
+                                                }
+                                            }) %>
+                                            <%= lengthCustomers %>
+                                        </h3>
+                                        <p>عدد العملاء</p>
+                                    </div>
+                                </div>
+                                <div class="card-item">
+                                    <i class='item-icon bx bx-dollar'></i>
+                                    <div class=" center">
+                                        <h3><%= BalanceCustomers %></h3>
+                                        <p>رصيد العملاء</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Row grid-2 ">
+                                <div class="card-item">
+                                    <i class='item-icon bx bx-user'></i>
+                                    <div class="center">
+                                        <h3>
+                                            <% let lengthSuppliers=0%>
+                                            <% MainData.SuppliersData.forEach(Supplier=> {
+                                                if (Supplier.CreatedAt.toJSON().slice(0, 7) === ThisMonth && Supplier.Status === "TRUE" ) {
+                                                    BalanceSuppliers += Supplier.Balance
+                                                    lengthSuppliers++
+                                                }
+                                            }) %>
+                                            <%= lengthSuppliers %>
+                                        </h3>
+                                        <p>عدد الموردين</p>
+                                    </div>
+                                </div>
+                                <div class="card-item">
+                                    <i class='item-icon bx bx-dollar'></i>
+                                    <div class=" center">
+                                        <h3><%= BalanceSuppliers %></h3>
+                                        <p>رصيد الموردين</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="Row grid-2 ">
+                                <div class="card-item">
+                                    <i class='item-icon bx bx-receipt'></i>
+                                    <div class="center">
+                                        <h3><%= NuSalesCash + " فاتورة " %></h3>
+                                        <p>مبيعات نقدية</p>
+                                    </div>
+                                </div>
+                                <div class="card-item">
+                                    <i class='item-icon bx bx-receipt'></i>
+                                    <div class=" center">
+                                        <h3><%= NuSalesForward + " فاتورة " %></h3>
+                                        <p>مبيعات آجلة</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Row grid-2 ">
+                                <div class="card-item">
+                                    <i class='item-icon bx bx-receipt'></i>
+                                    <div class="center">
+                                        <h3><%= NuPurchasesCash + " فاتورة " %></h3>
+                                        <p>مشتريات نقدية</p>
+                                    </div>
+                                </div>
+                                <div class="card-item">
+                                    <i class='item-icon bx bx-receipt'></i>
+                                    <div class=" center">
+                                        <h3><%= NuPurchasesForward + " فاتورة " %></h3>
+                                        <p>مشتريات آجلة</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="Row grid-2 ">
+                                <div class="card-item">
+                                    <i class='item-icon bx bx-dollar'></i>
+                                    <div class="center">
+                                        <h3><%= MonthExpenses %></h3>
+                                        <p>اجمالي المصاريف</p>
+                                    </div>
+                                </div>
+                                <div class="card-item">
+                                    <i class='item-icon bx bx-dollar'></i>
+                                    <div class=" center">
+                                        <h3><%= MonthRevenues %></h3>
+                                        <p>اجمالي الايرادات</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Row grid-2B">
+                    <div class="card coll-pay">
+                        <div class="card">
+                            <h1 class="card-title">المقبوضات</h1>
+                            <div class="card-body Collect">
+                                <% let LengthCollect =0 %>
+                                <% Receipts.sort((A, Z) => new Date(Z.CreatedAt) - new Date(A.CreatedAt)) %>
+                                <% Receipts.forEach(Receipt => { %>
+                                    <%  if (Receipt.Debit === "الصندوق" && LengthCollect < 5) { %>
+                                       <%  LengthCollect++ %>
+                                        <div class="card-item">
+                                            <i class='item-icon bx bx-money'></i>
+                                            <div class="center">
+                                                <h3><%= Receipt.DocType %></h3>
+                                                <p><%= Receipt.Statment %></p>
+                                            </div>
+                                            <div class="left" >
+                                                <h3>+ <%= Receipt.Total %></h3>
+                                            </div>
+                                        </div>
+                                <% }});%>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <h1 class="card-title">المدفوعات</h1>
+                            <div class="card-body Payment">
+                                <% let LengthPayment =0 %>
+                                <% Receipts.forEach(Receipt => { %>
+                                   <% if (Receipt.Credit === "الصندوق" && LengthPayment < 5) { %>
+                                       <% LengthPayment++ %>
+                                        <div class="card-item">
+                                            <i class='item-icon bx bx-money'></i>
+                                            <div class="center">
+                                                <h3><%= Receipt.DocType %></h3>
+                                                <p><%= Receipt.Statment %></p>
+                                            </div>
+                                            <div class="left" >
+                                                <h3>- <%= Receipt.Total %> </h3>
+                                            </div>
+                                        </div>
+                                <% }})%>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card summary">
+                        <div class="card">
+                            <div class="card-item Primary">
+                                <i class='item-icon bx bxs-wallet'></i>
+                                <div class="center">
+                                    <h3>رصيد الخزنة </h3>
+                                    <p>المقبوضات - المدفوعات</p>
+                                </div>
+                                <div class="left" >
+                                    <h3><%= BalanceCash %></h3>
+                                </div>
+                            </div>
+                            <div class="Row grid-2 mrg-t-25">
+                                <div class="card-item Collect">
+                                    <i class='item-icon bx bx-money'></i>
+                                    <div class="center">
+                                        <h3><%= SumCollect %></h3>
+                                        <p>اجمالي المقبوضات</p>
+                                    </div>
+                                </div>
+                                <div class="card-item Payment">
+                                    <i class='item-icon bx bx-money'></i>
+                                    <div class=" center">
+                                        <h3><%= SumPayment %></h3>
+                                        <p>اجمالي المدفوعات</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-item Primary">
+                                <i class='item-icon bx bxs-cart'></i>
+                                <div class="center">
+                                    <h3>اجمالي المشتريات </h3>
+                                    <p>النقدية + الآجلة</p>
+                                </div>
+                                <div class="left" >
+                                    <h3><%= MonthPurchases %></h3>
+                                </div>
+                            </div>
+                            <div class="Row grid-2 mrg-t-25">
+                                <div class="card-item">
+                                    <i class='item-icon bx bxs-cart'></i>
+                                    <div class="center">
+                                        <h3><%= PurchasesCash %></h3>
+                                        <p>مشتريات نقدية</p>
+                                    </div>
+                                </div>
+                                <div class="card-item">
+                                    <i class='item-icon bx bxs-cart'></i>
+                                    <div class=" center">
+                                        <h3><%= PurchasesForward %></h3>
+                                        <p>مشتريات آجلة </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Row grid-2A charts">
+                    <div class="card">
+                        <p class="card-title">الشكل التوضيحي للشهر الحالي  </p>
+                        <div id="chart1"></div>
+                    </div>
+                    <div class="card">
+                        <p class="card-title">الشكل التوضيحي للشهر الحالي  </p>
+                        <div id="chart2"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="Toasts"></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.3/apexcharts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.js"
+        integrity="sha512-8Z5++K1rB3U+USaLKG6oO8uWWBhdYsM3hmdirnOEWp8h2B1aOikj5zBzlXs8QOrvY9OxEnD2QDkbSKKpfqcIWw=="
+        crossorigin="anonymous"></script>
+
+    <script src="Js/1-Main.js"></script>
+    <script src="Js/2-Notifications.js"></script>
+    <script src="Js/3-Home.js"></script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="icon" href="img/Logo.png" />
+    <link rel="stylesheet" href="Css/Main.css">
+    <link rel="stylesheet" href="Css/Style.css">
+    <link rel="stylesheet" href="Css/Toast.css">
+    <title class="asd">
+        <%= Title %>
+    </title>
+</head>
+
+<body>
+    <div class="Layout-body Receipt-Container">
+
+        <div class="Layout-Container" id="<%= FileID %>">
+
+            <div class="btns">
+                <div class="btn-box">
+                    <button type="button" onclick="print()" class="btn btn-print">
+                        <img src="Img/IconPrint.png" width="25" height="25">
+                    </button>
+                </div>
+            </div>
+
+            <%- include('Partials/DetailsCompany.ejs'); -%>
+
+            <h1 class="Title-Container"></h1>
+
+            <div class="Person-Details">
+                <div class="right">
+                    <div class="item">
+                        <h4>رقم الفاتورة</h4>
+                        <p class="DocNu"></p>
+                    </div>
+                    <div class="item">
+                        <h4>تاريخ الفاتورة</h4>
+                        <p class="DocDate"></p>
+                    </div>
+                    <div class="item">
+                        <h4>طريقة الدفع</h4>
+                        <p class="TypeAmount"></p>
+                    </div>
+                </div>
+
+                <div class="left">
+                    <div class="item">
+                        <h4>اسم العميل</h4>
+                        <p class="NameCustomer"></p>
+                    </div>
+                    <div class="item">
+                        <h4>العنوان</h4>
+                        <p class="AddressCustomer"></p>
+                    </div>
+                    <div class="item">
+                        <h4>رقم الهاتف</h4>
+                        <p class="PhoneCustomer"></p>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="Table-Container">
+                <table class="Table">
+                    <thead>
+                        <tr>
+                            <th>م</th>
+                            <th>اسم المنتج</th>
+                            <th>الوحدة</th>
+                            <th>الكمية</th>
+                            <th>السعر</th>
+                            <th>الاجمالي</th>
+                        </tr>
+                    </thead>
+                    <tbody class="Table-body"></tbody>
+                </table>
+            </div>
+
+            <div class="Details-Total">
+                <div class="itme">
+                    <span>اجمالي الفاتورة</span>
+                    <p class="SubTotal">0.00</p>
+                </div>
+                <div class="itme">
+                    <span>الخصم</span>
+                    <p class="Discount">0.00</p>
+                </div>
+                <div class="itme">
+                    <span>صافي الفاتورة</span>
+                    <p class="Total">0.00</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="Js/15-ShowReceipt.js"></script>
+</body>
+
+</html>

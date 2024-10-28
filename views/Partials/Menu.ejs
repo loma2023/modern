@@ -1,0 +1,271 @@
+<div class="Layout-Menu">
+    <i href="#" class="layout-logo">
+        <img src="Img/Logo.png" alt="" srcset="">
+        <div class="logo-text">MODERN</div>
+    </i>
+    <i class='cancel-icon bx bxs-x-circle' onclick="ActiveBody()"></i>
+
+
+    <div class="wrapper-items">
+
+        <div class="menu-item <% if (Title.includes("Home")) { %> active <% } %>">
+                <a href="Home">
+                    <i class="icon bx bxs-home"></i>
+                    <div class="item-title">الصفحة الرئيسية</div>
+                </a>
+        </div>
+
+        <div class="menu-item <%if(Title.includes("العملاء") && !Title.includes("تقرير") ) { %> open <% } %>">
+                <a>
+                    <i class="icon bx bxs-user"></i>
+                    <div class="item-title">العملاء</div>
+                    <i class="arrow-toggle bx bx-chevron-down"></i>
+                </a>
+
+                <div class="sub-menu" <% if (Title.includes("العملاء") && !Title.includes("تقرير")) { %> style="display:
+                    block;" <% } %>>
+                        <div class="menu-item <% if (Title === "العملاء") { %>
+                            active <% } %>">
+                                <a href="CustomersData">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">بيانات العملاء</div>
+                                </a>
+                        </div>
+                        <div class="menu-item <% if (Title.includes("مواعيد التحصيل") ) { %> active <% } %>">
+                                <a href="CustomersTimes">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">مواعيد التحصيل</div>
+                                </a>
+                        </div>
+                </div>
+        </div>
+
+        <div class="menu-item <%if(Title.includes("لموردين") && !Title.includes("تقرير") ) { %> open <% } %>">
+                <a>
+                    <i class="icon bx bxs-user"></i>
+                    <div class="item-title">الموردين</div>
+                    <i class="arrow-toggle bx bx-chevron-down"></i>
+                </a>
+
+                <div class="sub-menu" <% if (Title.includes("لموردين") && !Title.includes("تقرير")) { %>
+                    style="display: block;" <% } %>>
+                        <div class="menu-item <% if (Title === "الموردين") { %>
+                            active <% } %>">
+                                <a href="SuppliersData">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">بيانات الموردين</div>
+                                </a>
+                        </div>
+                        <div class="menu-item <% if (Title.includes("مواعيد الدفع")) { %> active <% } %>">
+                                <a href="SuppliersTimes">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">مواعيد الدفع</div>
+                                </a>
+                        </div>
+                </div>
+        </div>
+
+        <div class="menu-item <%if(Title.includes("المنتجات") || Title.includes("الاسعار")) { %> open <% } %>">
+                <a>
+                    <i class="icon bx bxs-cart"></i>
+                    <div class="item-title">المنتجات</div>
+                    <i class="arrow-toggle bx bx-chevron-down"></i>
+                </a>
+
+                <div class="sub-menu" <% if (Title.includes("المنتجات") || Title.includes("الاسعار")) { %>
+                    style="display: block;" <% } %>>
+                        <div class="menu-item <% if (Title === "قائمة المنتجات" ) { %> active <% } %>">
+                                <a href="ProductsData">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">قائمة المنتجات</div>
+                                </a>
+                        </div>
+                        <div class="menu-item <% if (Title.includes("الاسعار") ) { %> active <% } %>">
+                                <a href="ProductsList">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">قائمة الاسعار</div>
+                                </a>
+                        </div>
+                        <div class="menu-item <% if (Title.includes("نواقص") ) { %> active <% } %>">
+                                <a href="ProductsOut">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">النواقص</div>
+                                </a>
+                        </div>
+                </div>
+        </div>
+
+        <div class="menu-item <%if(Title.includes("فاتورة") || Title.includes("الفواتير")) { %> open <% } %>">
+                <a>
+                    <i class="icon bx bxs-receipt"></i>
+                    <div class="item-title">الفواتير</div>
+                    <i class="arrow-toggle bx bx-chevron-down"></i>
+                </a>
+
+                <div class="sub-menu" <% if (Title.includes("فاتورة") || Title.includes("الفواتير")) { %>
+                    style="display: block;" <% } %>>
+                        <div class="menu-item <% if (Title.includes("فاتورة مبيعات") ) { %> active <% } %>">
+                                <a href="ReceiptSales">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">فاتورة مبيعات</div>
+                                </a>
+                        </div>
+                        <div class="menu-item <% if (Title.includes("فاتورة مشتريات") ) { %> active <% } %>">
+                                <a href="ReceiptPurchases">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">فاتورة مشتريات</div>
+                                </a>
+                        </div>
+                        <div class="menu-item <% if (Title.includes("الفواتير") ) { %> active <% } %>">
+                                <a href="ALLReceipts">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">كل الفواتير</div>
+                                </a>
+                        </div>
+                </div>
+        </div>
+
+        <div class="menu-item <% if (Title.includes("الايرادات") && !Title.includes("تقرير") ) { %> active <% } %>">
+                <a href="RevenuesData">
+                    <i class="icon bx bx-dollar"></i>
+                    <div class="item-title">الايرادات</div>
+                </a>
+        </div>
+
+        <div class="menu-item <% if (Title.includes("المصاريف") && !Title.includes("تقرير") ) { %> active <% } %>">
+                <a href="ExpensesData">
+                    <i class="icon bx bx-dollar"></i>
+                    <div class="item-title">المصاريف</div>
+                </a>
+        </div>
+
+        <div class="menu-item <% if (Title.includes("النقدية") ) { %> active <% } %>">
+                <a href="CashBook">
+                    <i class="icon bx bxs-book-alt"></i>
+                    <div class="item-title">دفتر النقدية</div>
+                </a>
+        </div>
+
+        <div class="menu-item <% if (Title.includes("سندات") ) { %> active <% } %>">
+                <a href="CollectsData">
+                    <i class="icon bx bx-dollar"></i>
+                    <div class="item-title">السندات</div>
+                </a>
+        </div>
+
+        <div class="menu-item <%if(Title.includes("تقرير")) { %> open <% } %>">
+                <a>
+                    <i class="icon bx bxs-report"></i>
+                    <div class="item-title">التقارير</div>
+                    <i class="arrow-toggle bx bx-chevron-down"></i>
+                </a>
+
+                <div class="sub-menu" <% if (Title.includes("تقرير")) { %> style="display: block;" <% } %>>
+                        <div class="menu-item <% if (Title.includes("تقرير العملاء") ) { %> active <% } %>">
+                                <a href="CustomersReport">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">تقرير العملاء</div>
+                                </a>
+                        </div>
+                        <div class="menu-item <% if (Title.includes("تقرير الموردين") ) { %> active <% } %>">
+                                <a href="SuppliersReport">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">تقرير الموردين</div>
+                                </a>
+                        </div>
+                        <div class="menu-item <% if (Title.includes("تقرير مبيعات") ) { %> active <% } %>">
+                                <a href="SalesReport">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">تقرير مبيعات</div>
+                                </a>
+                        </div>
+                        <div class="menu-item <% if (Title.includes("تقرير مشتريات") ) { %> active <% } %>">
+                                <a href="PurchasesReport">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">تقرير مشتريات</div>
+                                </a>
+                        </div>
+                        <div class="menu-item <% if (Title.includes("تقرير حركة") ) { %> active <% } %>">
+                                <a href="PoductsReport">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">تقرير حركة المخزن</div>
+                                </a>
+                        </div>
+                        <div class="menu-item <% if (Title.includes("تقرير الايرادات") ) { %> active <% } %>">
+                                <a href="RevenuesReport">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">تقرير الايرادات</div>
+                                </a>
+                        </div>
+                        <div class="menu-item <% if (Title.includes("تقرير المصاريف") ) { %> active <% } %>">
+                                <a href="ExpensesReport">
+                                    <i class="icon bx bxs-circle"></i>
+                                    <div class="item-title">تقرير المصاريف</div>
+                                </a>
+                        </div>
+                </div>
+        </div>
+        <div class="menu-item <% if (Title.includes("المستخدمين") ) { %> active <% } %>">
+                <a href="UsersData">
+                    <i class='icon bx bxs-user'></i>
+                    <div class="item-title">ادارة المستخدمين</div>
+                </a>
+        </div>
+
+        <div class="menu-item <% if (Title.includes("الدخل") ) { %> active <% } %>">
+            <a href="Profits">
+                <i class='icon bx bx-dollar'></i>
+                <div class="item-title">قائمة الدخل</div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<header class="Layout-Header">
+    <i class='menu-toggle bx bx-menu-alt-right' onclick="ActiveBody()"></i>
+
+    <div class="tools">
+        <i class='icon screen-toggle bx bx-fullscreen' onclick="ToggleFullScreen()"></i>
+
+        <% if (User.DarkMood===true) { %>
+            <i class='icon moon-toggle bx bxs-sun' onclick="DarkMood()"></i>
+            <% } %>
+                <% if (User.DarkMood !=true) { %>
+                    <i class='icon moon-toggle bx bxs-moon' onclick="DarkMood()"></i>
+                    <% } %>
+
+
+                        <div class="Notifications">
+                            <i class='icon bell-icon bx bx-bell'></i>
+                            <span class="num-not">0</span>
+                        
+                            <div class="Notificat-body arrow arr-top-left">
+                                <div class="Notificat-items">
+                                    <div class="NoNotifications">
+                                        <img src="Img/Notifications.svg" alt="" srcset="">
+                                        <h3>لا يوجد اشعارات</h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="UserTools">
+                            <img src="Img/avatar.png" alt="" srcset="">
+                           
+                            <div class="UserPage arrow arr-top-left">
+                                <a href="Settings" class="PageItem">
+                                    <i class='icon bell-icon bx bx-cog'></i>
+                                    <h3>الاعدادات</h3>
+                                    <i class="bx bxs-left-arrow"></i>
+                                </a>
+
+                                <a href="SignOut" class="PageItem">
+                                    <i class='icon bell-icon bx bx-log-out'></i>
+                                    <h3>خروج</h3>
+                                    <i class="bx bxs-left-arrow"></i>
+                                </a>
+                            </div>
+                        </div>
+
+    </div>
+</header>
